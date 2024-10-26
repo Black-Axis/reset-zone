@@ -1,0 +1,49 @@
+{
+  "customSyntax": "postcss-scss",
+  "plugins": [
+    "stylelint-scss"
+  ],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss"
+  ],
+  "ignoreFiles": [
+    "dist/reset-zone.scss.css",
+    "dist/reset-zone.css"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "./src/**/*.scss"
+      ],
+      "customSyntax": "postcss-scss"
+    }
+  ],
+  "rules": {
+    "no-duplicate-selectors": true,
+    "no-duplicate-at-import-rules": true,
+    "declaration-no-important": true,
+    "declaration-block-no-duplicate-properties": true,
+    "color-no-hex": null,
+    "at-rule-no-unknown": null,
+    "scss/selector-no-redundant-nesting-selector": true,
+    "block-no-empty": true,
+    "comment-no-empty": true,
+    "no-empty-source": null,
+    "function-calc-no-unspaced-operator": true,
+    "keyframe-declaration-no-important": true,
+    "media-query-no-invalid": true,
+    "number-max-precision": 3,
+    "declaration-block-single-line-max-declarations": 1,
+    "font-weight-notation": "numeric",
+    "selector-type-case": "lower",
+    "custom-property-pattern": "sp-.+",
+    "keyframes-name-pattern": "sp-.+",
+    "function-name-case": "lower",
+    "value-keyword-case": "lower",
+    "selector-attribute-quotes": "always",
+    "comment-empty-line-before": "always",
+    "color-hex-length": "long",
+    "color-named": "never"
+  }
+}
