@@ -1,0 +1,67 @@
+{
+  "name": "reset-zone",
+  "version": "1.0.0",
+  "description": "A modern CSS reset for modern web applications!",
+  "packageManager": "yarn@4.5.0",
+  "markdown": "github",
+  "license": "MIT",
+  "organizationName": "Black Axis",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://opensource.org/license/mit/"
+    }
+  ],
+  "author": "Khaled Mohamed <k.mohamed.11.98@gmail.com> (https://github.com/krypton225)",
+  "contributors": [
+    "Khaled Mohamed"
+  ],
+  "bugs": {
+    "url": "https://github.com/Black-Axis/reset-zone/issues",
+    "email": "black_axis@outlook.com"
+  },
+  "keywords": [
+    "CSS",
+    "SCSS",
+    "Reset",
+    "SCSS Reset",
+    "CSS Reset",
+    "reset-zone"
+  ],
+  "repository": {
+    "url": "https://github.com/Black-Axis/reset-zone",
+    "type": "git"
+  },
+  "scripts": {
+    "dev": "concurrently \"yarn scss:watch\" \"yarn lint\" \"yarn postcss:watch\"",
+    "scss:watch": "sass ./src/reset-zone.scss:dist/reset-zone.css --no-source-map --watch && postcss dist/reset-zone.css --replace --config postcss.config.js",
+    "postcss:watch": "postcss dist/reset-zone.css --dir dist --use autoprefixer --watch --no-source-map",
+    "lint": "yarn stylelint \"./src/**/*.scss\" --fix",
+    "upgrade": "ncu --upgrade",
+    "cmt": "cz",
+    "tags:github": "git push repo --tags",
+    "tags:gitlab": "git push gitlab --tags"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "concurrently": "^9.0.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^9.13.0",
+    "npm-check-updates": "^17.1.6",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0",
+    "postcss-preset-env": "^10.0.8",
+    "postcss-scss": "^4.0.9",
+    "sass": "^1.80.4",
+    "stylelint": "^16.10.0",
+    "stylelint-config-recommended": "^14.0.1",
+    "stylelint-config-standard": "^36.0.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "stylelint-scss": "^6.8.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

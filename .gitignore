@@ -7,7 +7,12 @@ node_modules
 !.yarn/sdks
 !.yarn/versions
 
-/dist
+# Ignore everything in the dist folder
+/dist/*
+
+# Except for reset-zone.css
+!dist/reset-zone.css
+!dist/reset-zone.min.css
 
 /.vscode/*
 !.vscode/settings.json
