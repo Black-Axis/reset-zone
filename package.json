@@ -35,7 +35,7 @@
   "scripts": {
     "dev": "concurrently \"yarn scss:watch\" \"yarn lint\" \"yarn postcss:watch\"",
     "scss:watch": "sass ./src/reset-zone.scss:dist/reset-zone.css --no-source-map --watch && postcss dist/reset-zone.css --replace --config postcss.config.js",
-    "postcss:watch": "postcss dist/reset-zone.css --dir dist --use autoprefixer --watch --no-source-map",
+    "postcss:watch": "postcss dist/reset-zone.css --dir dist --use autoprefixer --watch --no-map",
     "lint": "yarn stylelint \"./src/**/*.scss\" --fix",
     "upgrade": "ncu --upgrade",
     "cmt": "cz",
