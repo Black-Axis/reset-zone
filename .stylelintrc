@@ -9,6 +9,7 @@
   ],
   "ignoreFiles": [
     "dist/reset-zone.scss.css",
+    "dist/reset-zone.min.css",
     "dist/reset-zone.css"
   ],
   "overrides": [
