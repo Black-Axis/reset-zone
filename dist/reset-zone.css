@@ -23,8 +23,8 @@
 
 body {
   --rz-body-min-height: 100dvh;
-  min-block-size: var(--rz-body-min-height);
-  min-height: var(--rz-body-min-height);
+  min-block-size: var(--rz-body-min-height, 100dvh);
+  min-height: var(--rz-body-min-height, 100dvh);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -125,10 +125,10 @@ canvas,
 svg {
   --rz-asset-max-width: 100%;
   --rz-asset-height: auto;
-  max-inline-size: var(--rz-asset-max-width);
-  max-width: var(--rz-asset-max-width);
-  block-size: var(--rz-asset-height);
-  height: var(--rz-asset-height);
+  max-inline-size: var(--rz-asset-max-width, 100%);
+  max-width: var(--rz-asset-max-width, 100%);
+  block-size: var(--rz-asset-height, auto);
+  height: var(--rz-asset-height, auto);
   font-style: italic;
   background-repeat: no-repeat;
   -o-background-size: cover;
@@ -237,20 +237,20 @@ dialog {
   --rz-dialog-border: 1px solid hsl(0deg 0% 91.81%);
   --rz-dialog-scrollbar-bg: transparent;
   --rz-dialog-scrollbar-width: none;
-  max-width: var(--rz-dialog-max-width);
-  max-inline-size: var(--rz-dialog-max-width);
-  max-height: var(--rz-dialog-max-height);
-  max-block-size: var(--rz-dialog-max-height);
+  max-width: var(--rz-dialog-max-width, 90%);
+  max-inline-size: var(--rz-dialog-max-width, 90%);
+  max-height: var(--rz-dialog-max-height, 85dvh);
+  max-block-size: var(--rz-dialog-max-height, 85dvh);
   margin: auto;
   padding: 0;
-  border: var(--rz-dialog-border);
+  border: var(--rz-dialog-border, 1px solid hsl(0, 0%, 91.81%));
   -webkit-border-radius: 0.5rem;
           border-radius: 0.5rem;
   -ms-scroll-chaining: none;
       overscroll-behavior: contain;
   scroll-behavior: smooth;
-  scrollbar-width: var(--rz-dialog-scrollbar-width);
-  scrollbar-color: var(--rz-dialog-scrollbar-bg) var(--rz-dialog-scrollbar-bg);
+  scrollbar-width: var(--rz-dialog-scrollbar-width, none);
+  scrollbar-color: var(--rz-dialog-scrollbar-bg, transparent) var(--rz-dialog-scrollbar-bg, transparent);
   -webkit-animation: rz-bottom-to-top 0.25s ease-in-out forwards;
      -moz-animation: rz-bottom-to-top 0.25s ease-in-out forwards;
        -o-animation: rz-bottom-to-top 0.25s ease-in-out forwards;
@@ -263,15 +263,15 @@ dialog {
 }
 dialog::-webkit-scrollbar {
   --rz-dialog-scrollbar-width: 0;
-  width: var(--rz-dialog-scrollbar-width);
-  inline-size: var(--rz-dialog-scrollbar-width);
+  width: var(--rz-dialog-scrollbar-width, 0);
+  inline-size: var(--rz-dialog-scrollbar-width, 0);
   display: none;
 }
 dialog::-webkit-scrollbar-track {
-  background-color: var(--rz-dialog-scrollbar-bg);
+  background-color: var(--rz-dialog-scrollbar-bg, transparent);
 }
 dialog::-webkit-scrollbar-thumb {
-  background-color: var(--rz-dialog-scrollbar-bg);
+  background-color: var(--rz-dialog-scrollbar-bg, transparent);
 }
 dialog::-webkit-backdrop {
   background-color: hsl(0, 0%, 0%);
@@ -353,10 +353,10 @@ dialog::backdrop {
 .sr-only {
   --rz-sr-only-width: 1px;
   --rz-sr-only-height: 1px;
-  inline-size: var(--rz-sr-only-width);
-  width: var(--rz-sr-only-width);
-  block-size: var(--rz-sr-only-height);
-  height: var(--rz-sr-only-height);
+  inline-size: var(--rz-sr-only-width, 1px);
+  width: var(--rz-sr-only-width, 1px);
+  block-size: var(--rz-sr-only-height, 1px);
+  height: var(--rz-sr-only-height, 1px);
   border: 0;
   margin: -1px;
   padding: 0;
@@ -370,10 +370,10 @@ dialog::backdrop {
 .not-sr-only {
   --rz-not-sr-only-width: auto;
   --rz-not-sr-only-height: auto;
-  inline-size: var(--rz-not-sr-only-width);
-  width: var(--rz-not-sr-only-width);
-  block-size: var(--rz-not-sr-only-height);
-  height: var(--rz-not-sr-only-height);
+  inline-size: var(--rz-not-sr-only-width, auto);
+  width: var(--rz-not-sr-only-width, auto);
+  block-size: var(--rz-not-sr-only-height, auto);
+  height: var(--rz-not-sr-only-height, auto);
   position: static;
   padding: 0;
   margin: 0;
