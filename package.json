@@ -33,9 +33,10 @@
     "type": "git"
   },
   "scripts": {
-    "dev": "concurrently \"yarn scss:watch\" \"yarn lint\" \"yarn postcss:watch\"",
+    "dev": "concurrently \"yarn scss:watch\" \"yarn lint\" \"yarn postcss:watch\" \"yarn min:css\"",
     "scss:watch": "sass ./src/reset-zone.scss:dist/reset-zone.css --no-source-map --watch && postcss dist/reset-zone.css --replace --config postcss.config.js",
     "postcss:watch": "postcss dist/reset-zone.css --dir dist --use autoprefixer --watch --no-map",
+    "min:css": "nodemon --watch ./dist/reset-zone.css --exec 'yarn postcss dist/reset-zone.css -o dist/reset-zone.min.css'",
     "lint": "yarn stylelint \"./src/**/*.scss\" --fix",
     "upgrade": "ncu --upgrade",
     "cmt": "cz",
@@ -47,9 +48,11 @@
     "concurrently": "^9.0.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.13.0",
+    "nodemon": "^3.1.7",
     "npm-check-updates": "^17.1.6",
     "postcss": "^8.4.47",
     "postcss-cli": "^11.0.0",
+    "postcss-minify": "^1.1.0",
     "postcss-preset-env": "^10.0.8",
     "postcss-scss": "^4.0.9",
     "sass": "^1.80.4",
