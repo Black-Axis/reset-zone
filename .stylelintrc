@@ -8,9 +8,10 @@
     "stylelint-config-standard-scss"
   ],
   "ignoreFiles": [
-    "dist/reset-zone.scss.css",
-    "dist/reset-zone.min.css",
-    "dist/reset-zone.css"
+    "dist/reset-zone.regular.css",
+    "dist/reset-zone.regular.min.css",
+    "dist/reset-zone.layer.css",
+    "dist/reset-zone.layer.min.css"
   ],
   "overrides": [
     {
