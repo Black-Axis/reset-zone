@@ -27,21 +27,21 @@ yarn add reset-zone
 ## Usage
 After installation, you can simply import the CSS file at the top of your main stylesheet if using npm, or directly in your HTML if you downloaded it.
 
-If you're using a bundler like Webpack, import it at the top of your main CSS or SCSS file (or any CSS preprocessors):
+If you're using a bundler like Webpack, import it at the top of your main CSS or SCSS file (or any CSS preprocessor):
 
-```css
-@import '/go/to/node_modules/reset-zone/dist/reset-zone.css';
+```scss
+@use '/go/to/node_modules/reset-zone/dist/reset-zone.min.css' as *;
 ```
-
-Or minified version:
 
 ```css
 @import '/go/to/node_modules/reset-zone/dist/reset-zone.min.css';
 ```
 
+But the previous way is not recommended.
+
 Or, if using JavaScript to manage styles:
 ```javascript
-import '/go/to/node_modules/reset-zone/dist/reset-zone.css';
+import '/go/to/node_modules/reset-zone/dist/reset-zone.min.css';
 ```
 
 Or, you can use it into link tag of your HTML:
