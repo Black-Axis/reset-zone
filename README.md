@@ -71,7 +71,7 @@ And minified version of layer version:
 
 Or, if using JavaScript to manage styles:
 ```javascript
-import '/go/to/node_modules/reset-zone/dist/reset-zone.min.css';
+import '/go/to/node_modules/reset-zone/dist/reset-zone.{layer/regular}.{min.css|.css}';
 ```
 
 Or, you can use it into link tag of your HTML:
