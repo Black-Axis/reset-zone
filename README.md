@@ -29,15 +29,45 @@ After installation, you can simply import the CSS file at the top of your main s
 
 If you're using a bundler like Webpack, import it at the top of your main CSS or SCSS file (or any CSS preprocessor):
 
+For using SCSS regular version:
+
 ```scss
-@use '/go/to/node_modules/reset-zone/dist/reset-zone.min.css' as *;
+@use "../../../Long-Projects/reset-zone/src/reset-zone.regular.scss" as ResetZoneLibraryWithCSSRegular;
 ```
+
+For using SCSS layer version:
+
+```scss
+@use "../../../Long-Projects/reset-zone/src/reset-zone.layer.scss" as ResetZoneLibraryWithCSSLayer;
+```
+
+⭕ But the previous ways is not recommended.
+
+✅ The recommended ways to use the version of CSS because of vendor prefixes in CSS files:
+
+For using regular version:
 
 ```css
-@import '/go/to/node_modules/reset-zone/dist/reset-zone.min.css';
+@import '/go/to/node_modules/reset-zone/dist/reset-zone.regular.css';
 ```
 
-But the previous way is not recommended.
+And minified version of regular version:
+
+```css
+@import '/go/to/node_modules/reset-zone/dist/reset-zone.regular.min.css';
+```
+
+For using layer version:
+
+```css
+@import '/go/to/node_modules/reset-zone/dist/reset-zone.layer.css';
+```
+
+And minified version of layer version:
+
+```css
+@import '/go/to/node_modules/reset-zone/dist/reset-zone.layer.min.css';
+```
 
 Or, if using JavaScript to manage styles:
 ```javascript
@@ -46,8 +76,28 @@ import '/go/to/node_modules/reset-zone/dist/reset-zone.min.css';
 
 Or, you can use it into link tag of your HTML:
 
+For using regular version:
+
 ```html
-<link rel="stylesheet" href="https://raw.githubusercontent.com/Black-Axis/reset-zone/master/dist/reset-zone.min.css">
+<link rel="stylesheet" href="https://raw.githubusercontent.com/Black-Axis/reset-zone/master/dist/reset-zone.regular.css">
+```
+
+For using minified regular version:
+
+```html
+<link rel="stylesheet" href="https://raw.githubusercontent.com/Black-Axis/reset-zone/master/dist/reset-zone.regular.min.css">
+```
+
+For using layer version:
+
+```html
+<link rel="stylesheet" href="https://raw.githubusercontent.com/Black-Axis/reset-zone/master/dist/reset-zone.layer.css">
+```
+
+For using minified layer version:
+
+```html
+<link rel="stylesheet" href="https://raw.githubusercontent.com/Black-Axis/reset-zone/master/dist/reset-zone.layer.min.css">
 ```
 
 This will apply the reset styles globally, ensuring a consistent baseline across browsers.
