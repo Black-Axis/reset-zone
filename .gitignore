@@ -13,6 +13,10 @@ node_modules
 # Except for reset-zone.css
 !dist/reset-zone.css
 !dist/reset-zone.min.css
+!dist/reset-zone.regular.css
+!dist/reset-zone.regular.min.css
+!dist/reset-zone.layer.css
+!dist/reset-zone.layer.min.css
 
 /.vscode/*
 !.vscode/settings.json

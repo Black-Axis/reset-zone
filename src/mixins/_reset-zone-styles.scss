@@ -1,0 +1,802 @@
+@charset "UTF-8";
+
+// @description
+// * A mixin that resets all basic HTML elements to their default
+// * styles, which are defined by the W3C specification. This is
+// * useful for ensuring that all browsers render the HTML elements
+// * correctly, and for removing any default browser styles that
+// * may interfere with other styles.
+// *
+// * You can also use the compiled files in `dist` directory as it is the
+// * recommended way to use the package. The compiled files contain vendor
+// * prefixes of all CSS properties which is very important in production.
+// * You can read file `README.md` to know how to use the package.
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin reset-zone() {
+    // * Box sizing rules.
+    // * Apply a universal box-sizing rule to all elements, including
+    // * pseudo-elements. This resets margin and padding to prevent
+    // * default browser styles from interfering, and ensures that the
+    // * box-sizing property is set to border-box.
+    // *
+    // * Using border-box makes it easier to manage size and layout as
+    // * the padding and border are included within the element's
+    // * specified width and height.
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    // * Set core root defaults.
+    // *
+    // * Smooth scrolling for all desktop devices
+    // * This is for accessibility purposes and only when the user
+    // * prefers reduced motion. It is not enabled by default.
+
+    html,
+    html:focus-within {
+      // * Enable smooth scrolling only when the user prefers reduced
+      // * motion. This is for accessibility purposes.
+      @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth;
+      }
+
+      // * Disable smooth scrolling for users who prefer reduced motion
+      // * and are using a touch device.
+      @media (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+      }
+    }
+
+    // * Set core body defaults
+    // *
+    // * Set the minimum body height to viewport height, to prevent
+    // * the content from being rendered outside of the viewport.
+    // *
+    // * This is important for accessibility and to prevent that
+    // * users with small screens or users with assistive technologies
+    // * to zoom in and out to see the content.
+
+    body {
+      --rz-body-min-height: 100dvh;
+
+      min-block-size: var(--rz-body-min-height, 100dvh);
+      min-height: var(--rz-body-min-height, 100dvh);
+      line-height: 1.5;
+
+      // * Improve text rendering in the browsers
+      -webkit-font-smoothing: antialiased;
+
+      // * Allow to break long words to avoid overflowing the container
+      // * This is important for accessibility and to prevent that
+      // * users with small screens or users with assistive technologies
+      // * to zoom in and out to see the content.
+      // stylelint-disable-next-line scss/selector-no-redundant-nesting-selector
+      :where(&) {
+        overflow-wrap: break-word;
+        hyphens: auto;
+      }
+    }
+
+    // * Remove default margin.
+    // *
+    // * This is important for accessibility and to prevent that
+    // * users with small screens or users with assistive technologies
+    // * to zoom in and out to see the content.
+    // *
+    // * The following elements are reset to have a zero margin:
+    // *
+    // * `body` to prevent the content from being rendered
+    // * outside of the viewport.
+    // * `h1`, `h2`, `h3`, `h4` to prevent the headings from
+    // * having a default margin.
+    // * `p` to prevent the paragraphs from having a default margin.
+    // * `figure` to prevent the figures from having a default margin.
+    // * `blockquote` to prevent the blockquotes from having a default margin.
+    // * `dl` to prevent the definition lists from having a default margin.
+    // * `dd` to prevent the definition description from having a default margin.
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    figure,
+    blockquote,
+    dl,
+    dd {
+      margin: 0;
+    }
+
+    // * Avoid text overflows.
+    // * Allow text to break at arbitrary points to avoid overflowing the container
+    // *
+    // * This is important for accessibility and to prevent that
+    // * users with small screens or users with assistive technologies
+    // * to zoom in and out to see the content.
+    // *
+    // * The following elements are reset to have the `overflow-wrap` property
+    // * set to `break-word`:
+    // *
+    // * `p` to prevent paragraphs from overflowing the container.
+    // * `h1`, `h2`, `h3`, `h4`, `h5`, `h6` to prevent headings from overflowing
+    // * the container.
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      overflow-wrap: break-word;
+    }
+
+    // * Remove list styles on ul, ol elements with a list role which suggests
+    // * default styling will be removed. This is important for accessibility and
+    // * to prevent that users with small screens or users with assistive
+    // * technologies to zoom in and out to see the content.
+    // *
+    // * The following elements are reset to have the `list-style` property
+    // * set to `none`:
+    // *
+    // * `ul[role="list"]` to remove default list styling.
+    // * `menu[role="list"]` to remove default list styling.
+    // * `ol[role="list"]` to remove default list styling.
+
+    ul[role="list"],
+    menu[role="list"],
+    ol[role="list"] {
+      list-style: none;
+    }
+
+    // * Set the display property to block for all main HTML5 elements.
+    // *
+    // * The following elements are reset to have the `display` property
+    // * set to `block`:
+    // *
+    // * `main, header, footer, section, article, aside, nav, menu, details,
+    // * summary, figcaption, figure, hgroup, img, picture, video, canvas, svg`
+
+    main,
+    header,
+    footer,
+    section,
+    article,
+    aside,
+    nav,
+    menu,
+    details,
+    summary,
+    figcaption,
+    figure,
+    hgroup,
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+      display: block;
+
+    }
+
+    // * Set default styles for sub and sup HTML elements.
+    // * - `position: relative;` is used to position the element relative to its
+    // *   normal position.
+    // * - `font-size: 75%;` sets the font size for the element to 75% of the
+    // *   normal font size.
+    // * - `line-height: 0;` sets the line height to 0 so that the element does
+    // *   not take up any vertical space.
+    // * - `vertical-align: baseline;` sets the vertical alignment of the element
+    // *   to the baseline of the parent element.
+
+    sup,
+    sub {
+      position: relative;
+      font-size: 75%;
+      line-height: 0;
+      vertical-align: baseline;
+    }
+
+    // * Superscript elements
+    // * - `top: -0.5em;` will move the element up by half the height of the
+    // *   parent element's line height so that it is positioned above the
+    // *   normal text flow.
+
+    sup {
+      top: -0.5em;
+    }
+
+    // * Subscript elements
+    // * - `bottom: -0.25em;` will move the element down by a quarter of the
+    // *   height of the parent element's line height so that it is positioned
+    // *   below the normal text flow.
+
+    sub {
+      bottom: -0.25em;
+    }
+
+    // * Set default styles for menu tag
+    // *
+    // * - `unicode-bidi: isolate;` ensures that the text inside the menu
+    // *   element is isolated from text outside the element. This is important
+    // *   for preventing text directionality issues, especially in mixed
+    // *   language environments, ensuring that the text within behaves
+    // *   independently of surrounding text direction.
+
+    menu {
+      unicode-bidi: isolate;
+    }
+
+    // * A elements that don't have a class get default styles
+    // * Default styles for anchor elements without a class attribute.
+    // *
+    // * This ensures that links without a class have a consistent visual
+    // * appearance across different browsers. The styles applied include:
+    // *
+    // * - `text-decoration-skip-ink: auto;` allows the underline to skip over
+    // *   descenders, making the text more readable.
+    // * - `text-decoration-line: underline;` explicitly sets the text
+    // *   decoration to an underline.
+    // * - `text-decoration-thickness: max(0.08em, 1px);` sets the thickness
+    // *   of the underline to the maximum of 0.08em or 1px, ensuring
+    // *   visibility.
+    // * - `text-underline-offset: 0.15em;` offsets the underline from the
+    // *   text by 0.15em, improving readability.
+
+    a:not([class]) {
+      text-decoration-skip-ink: auto;
+      text-decoration-line: underline;
+      text-decoration-thickness: max(0.08em, 1px);
+      text-underline-offset: 0.15em;
+    }
+
+    // * Set default styles for images, videos, canvases, and SVGs
+    // *
+    // * - `max-inline-size` and `max-width` are set to `100%` so that the
+    // *   element will not exceed the width of its container.
+    // * - `block-size` and `height` are set to `auto` so that the element
+    // *   will not exceed the height of its container.
+    // * - `font-style: italic;` is set to prevent any font styles from being
+    // *   inherited from the parent element.
+    // * - `background-repeat: no-repeat;` is set to prevent the background
+    // *   image from repeating.
+    // * - `background-size: cover;` is set to scale the background image to
+    // *   cover the entire element.
+    // * - `shape-margin: 1rem;` is set to add a margin around the element
+    // *   and improve text wrapping.
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+      --rz-asset-max-width: 100%;
+      --rz-asset-height: auto;
+
+      max-inline-size: var(--rz-asset-max-width, 100%);
+      max-width: var(--rz-asset-max-width, 100%);
+      block-size: var(--rz-asset-height, auto);
+      height: var(--rz-asset-height, auto);
+      font-style: italic;
+      background-repeat: no-repeat;
+      background-size: cover;
+      shape-margin: 1rem;
+    }
+
+    // * Set default styles for figcaption
+    // *
+    // * - `font-style: italic;` is set to make the text within the figcaption
+    // *   element italic. This is a common visual cue for captions.
+
+    figcaption {
+      font-style: italic;
+    }
+
+    // * Inherit fonts for inputs and buttons
+    // *
+    // * This is a common accessibility problem in web development. If
+    // * the font styles are not inherited, the input fields and buttons
+    // * will not have the same font as the rest of the content.
+
+    input,
+    button,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    // * Reset styles of blockquote and q tag
+    // * Remove the default quotation marks on blockquote and q tags
+    // *
+    // * Quotation marks are often used to indicate quotations in writing.
+    // * However, in HTML, the blockquote and q tags are used to indicate
+    // * quotations as well. Therefore, it is not necessary to add
+    // * quotation marks inside these tags.
+    // *
+    // * The following code removes the default quotation marks on blockquote
+    // * and q tags.
+    // *
+    // * :before and :after pseudo elements are used to add quotation marks
+    // * before and after the content of the blockquote and q tags.
+    // *
+    // * The content property is used to remove the default quotation marks
+    // * on the blockquote and q tags.
+    // *
+    // * The quotes property is set to none to remove the default quotation
+    // * marks on the blockquote and q tags.
+    // * For more information, see the MDN documentation on the quotes property:
+    // * https://developer.mozilla.org/en-US/docs/Web/CSS/quotes
+
+    blockquote,
+    q {
+      quotes: none;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+
+    // * Removes spacing between cells in tables
+    // *
+    // * The `border-collapse: collapse;` property is used to collapse
+    // * the borders of adjacent table cells into a single border,
+    // * eliminating space between cells. This helps create a cleaner
+    // * and more organized appearance for tables.
+    // *
+    // * The `border-spacing: 0;` property is used to set the spacing
+    // * between table cells to zero. This ensures that there is no gap
+    // * between the cells, further enhancing the compact look of the
+    // * table layout.
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    // * The following code enables container queries for the following
+    // * elements:
+    // *
+    // * - The header element
+    // * - The footer element
+    // * - The main element
+    // * - The section element
+    // * - The article element
+    // *
+    // * The :is pseudo-class is used to group the selectors
+    // * to ensure that the container-type property is applied to
+    // * all the elements listed above.
+    // *
+    // * The container-type property is set to inline-size to
+    // * create a container query that styles the element's content
+    // * based on its own inline size.
+    // *
+    // * For more information on container queries, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
+    // * - https://css-tricks.com/css-container-queries/
+
+    @supports selector(:is) {
+      body> :is(header, footer),
+      main,
+      section,
+      article {
+        container-type: inline-size;
+      }
+    }
+
+    // * The following code enables container queries for the following
+    // * elements, but only when the browser does not support the
+    // * :is pseudo-class.
+    // *
+    // * - The header element
+    // * - The footer element
+    // * - The main element
+    // * - The section element
+    // * - The article element
+    // *
+    // * The container-type property is set to inline-size to
+    // * create a container query that styles the element's content
+    // * based on its own inline size.
+    // *
+    // * For more information on container queries, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
+    // * - https://css-tricks.com/css-container-queries/
+
+    @supports not selector(:is) {
+      body>header,
+      body>footer,
+      main,
+      section,
+      article {
+        container-type: inline-size;
+      }
+    }
+
+    // * The following code enables the hiding of elements with the
+    // * hidden attribute, but only when the browser does not support
+    // * the :where pseudo-class.
+    // *
+    // * The :where pseudo-class is supported in modern browsers and
+    // * this code is only needed for older browsers.
+    // *
+    // * The :where pseudo-class is more efficient than the [hidden]
+    // * attribute selector as it does not create a style rule.
+    // *
+    // * The :where pseudo-class will be used by browsers that support
+    // * it, and the [hidden] attribute selector will be used by
+    // * browsers that do not support the :where pseudo-class.
+    // *
+    // * For more information on the :where pseudo-class, see the
+    // * following resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:where
+
+    @supports selector(:where) {
+      :where([hidden]) {
+        display: none;
+      }
+    }
+
+    // * Hide elements with the hidden attribute for browsers not supporting
+    // * the :where pseudo-class. This ensures that elements with the hidden
+    // * attribute do not appear on the page in older browsers. The :where
+    // * pseudo-class is preferred in modern browsers for efficiency.
+    // *
+    // * For more information, see:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:where
+
+    @supports not selector(:where) {
+      [hidden] {
+        display: none;
+      }
+    }
+
+    // * The focus-visible pseudo-class is supported in modern browsers.
+    // * It is used to indicate if the browser is currently allowing the
+    // * user to focus on the element.
+    // *
+    // * When the focus-visible pseudo-class is supported, a focus ring
+    // * is only rendered if the browser is currently allowing the user
+    // * to focus on the element.
+    // *
+    // * For more information on the focus-visible pseudo-class, see the
+    // * following resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
+
+    @supports selector(:focus-visible) {
+      :focus-visible {
+        // * The outline property is used to render a focus ring around the
+        // * element when it is focused. The value of max(1px, 0.15em) is used
+        // * to ensure that the focus ring is at least 1px in width and
+        // * scales with the element's font size.
+        // stylelint-disable-next-line value-keyword-case
+        outline: max(1px, 0.15em) solid currentColor;
+
+        // * The outline-offset property is used to set the distance between
+        // * the outline and the element. The value of max(1px, 0.15em) is used
+        // * to ensure that the outline is at least 1px away from the element
+        // * and scales with the element's font size.
+        outline-offset: max(1px, 0.15em);
+      }
+    }
+
+    // * The following block provides fallback styles for browsers that do not
+    // * support the :focus-visible pseudo-class. The :focus-visible pseudo-class
+    // * is used to indicate if the browser is currently allowing the user to
+    // * focus on an element. When it is not supported, the :focus selector is
+    // * used as a fallback to ensure accessibility and usability for keyboard
+    // * users. This ensures a focus ring is displayed for all focusable elements.
+    // *
+    // * For more information, see:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
+
+    @supports not selector(:focus-visible) {
+      :focus {
+        // * The outline property renders a focus ring around the element when
+        // * it is focused. The value "max(1px, 0.15em)" ensures the focus ring
+        // * is at least 1px wide and scales with the element's font size.
+        // stylelint-disable-next-line value-keyword-case
+        outline: max(1px, 0.15em) solid currentColor;
+
+        // * The outline-offset property sets the distance between the outline
+        // * and the element. It also uses "max(1px, 0.15em)" to maintain
+        // * consistent spacing, ensuring the outline is visible without
+        // * intruding on the element's content.
+        outline-offset: max(1px, 0.15em);
+      }
+    }
+
+    // * Scroll margin allowance above anchor links
+    // * Anchor links (e.g., <a href="#anchor">Link</a>) and named anchors
+    // * (e.g., <a name="anchor">Link</a>) get a scroll margin allowance above
+    // * to ensure they are clearly in view. The value of 2rem is used to
+    // * balance the importance of the content with the importance of the
+    // * anchor link. The scroll-padding-block-start property is used to
+    // * target the block-start of the element, which is the top of the
+    // * element in a horizontal writing mode.
+    // * This rule is essential for usability and accessibility, as it
+    // * ensures that the content is not obscured by the browser's location
+    // * bar or other elements.
+    // * The :target pseudo-class is used to target elements that have an
+    // * anchor link pointing to them. For example, the following HTML will
+    // * apply the styles when the link is clicked:
+    // * <a href="#section">Link</a>
+    // * <section id="section">Content</section>
+
+    :target {
+      scroll-padding-block-start: 2rem;
+    }
+
+    // * Scroll margin allowance below focused elements to ensure they
+    // * are clearly in view
+    // *
+    // * When an element is focused, such as when a user clicks on a link or
+    // * uses their keyboard to navigate to an element, a scroll margin
+    // * allowance is applied below the element to ensure it is clearly
+    // * visible. The value of 8vh is used to balance the importance of the
+    // * content with the importance of the focused element. The
+    // * scroll-padding-block-end property is used to target the block-end
+    // * of the element, which is the bottom of the element in a horizontal
+    // * writing mode.
+    // *
+    // * This rule is essential for usability and accessibility, as it
+    // * ensures that the content is not obscured by the browser's location
+    // * bar or other elements.
+    // *
+    // * For example, the following HTML will apply the styles when the link is
+    // * clicked:
+    // * <a href="#section">Link</a>
+    // * <section id="section">Content</section>
+
+    :focus {
+      // * The scroll-padding-block-end property is used to set the scroll margin
+      // * allowance below the element when it is focused. The value of 8vh is used
+      // * to balance the importance of the content with the importance of the
+      // * focused element.
+      scroll-padding-block-end: 8vh;
+    }
+
+    // * Remove all animations, transitions and smooth scroll for
+    // * people that prefer not to see them. This is important for
+    // * accessibility and to prevent that users with small screens or
+    // * users with assistive technologies to zoom in and out to see the
+    // * content.
+    // *
+    // * The following properties are set to prevent that the browser
+    // * or the user agent to apply any animations, transitions or
+    // * smooth scroll:
+    // *
+    // * `animation-duration` is set to `0.01ms` to prevent that the
+    // * browser or the user agent to apply any animations.
+    // * `animation-iteration-count` is set to `1` to prevent that the
+    // * browser or the user agent to apply any animations.
+    // * `transition-duration` is set to `0.01ms` to prevent that the
+    // * browser or the user agent to apply any transitions.
+    // * `scroll-behavior` is set to `auto` to prevent that the browser or
+    // * the user agent to apply any smooth scroll.
+    // *
+    // * The `prefers-reduced-motion` media query is used to detect if
+    // * the user prefers reduced motion. If the user prefers reduced
+    // * motion, the styles will be applied to all elements, including
+    // * pseudo-elements. If the user does not prefer reduced motion, the
+    // * styles will not be applied.
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms;
+        animation-iteration-count: 1;
+        transition-duration: 0.01ms;
+        scroll-behavior: auto;
+      }
+    }
+
+    // * The styles applied to the `<dialog>` element.
+    // *
+    // * The max-width and max-height are set to 90% of the viewport width and
+    // * 85dvh of the viewport height respectively. This is to ensure that the
+    // * dialog is not too wide or too tall and is centered in the viewport.
+    // *
+    // * The padding is set to 1rem on the x-axis and 1.25rem on the y-axis.
+    // * This is to ensure that the dialog has a decent amount of padding.
+    // *
+    // * The border is set to 1px solid hsl(0deg 0% 91.81%). This is to ensure
+    // * that the dialog has a decent border.
+    // *
+    // * The scrollbar background color is set to transparent. This is to ensure
+    // * that the scrollbar does not have a background color.
+    // *
+    // * The scrollbar width is set to none. This is to ensure that the scrollbar
+    // * is not visible.
+    // *
+    // * The overscroll behavior is set to contain. This is to ensure that the
+    // * dialog does not have any overscroll behavior.
+
+    dialog {
+      --rz-dialog-max-width: 90%;
+      --rz-dialog-max-height: 85dvh;
+      --rz-dialog-padding-x: 1rem;
+      --rz-dialog-padding-y: 1.25rem;
+      --rz-dialog-border: 1px solid hsl(0deg 0% 91.81%);
+      --rz-dialog-scrollbar-bg: transparent;
+      --rz-dialog-scrollbar-width: none;
+
+      max-width: var(--rz-dialog-max-width, 90%);
+      max-inline-size: var(--rz-dialog-max-width, 90%);
+      max-height: var(--rz-dialog-max-height, 85dvh);
+      max-block-size: var(--rz-dialog-max-height, 85dvh);
+      margin: auto;
+      padding: 0;
+      border: var(--rz-dialog-border, 1px solid hsl(0deg 0% 91.81%));
+      border-radius: 0.5rem;
+      overscroll-behavior: contain;
+      scroll-behavior: smooth;
+
+      // Hide scrollbar for Firefox
+      scrollbar-width: var(--rz-dialog-scrollbar-width, none);
+
+      // Hide scrollbar for IE and Edge
+      // -ms-overflow-style: var(--rz-dialog-scrollbar-width);
+      scrollbar-color: var(--rz-dialog-scrollbar-bg, transparent) var(--rz-dialog-scrollbar-bg, transparent);
+      animation: rz-bottom-to-top 0.25s ease-in-out forwards;
+
+      @media only screen and (width > 767px) {
+        --rz-dialog-max-width: 45rem;
+      }
+
+      &::-webkit-scrollbar {
+        --rz-dialog-scrollbar-width: 0;
+
+        width: var(--rz-dialog-scrollbar-width, 0);
+        inline-size: var(--rz-dialog-scrollbar-width, 0);
+        display: none;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: var(--rz-dialog-scrollbar-bg, transparent);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--rz-dialog-scrollbar-bg, transparent);
+      }
+
+      &::backdrop {
+        background-color: hsl(0deg 0% 0%);
+        opacity: 0.5;
+      }
+    }
+
+    // * This animation is used to animate the dialog from bottom to top.
+    // * It is used to animate the dialog when it is opened or closed.
+    // *
+    // * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes}
+    // */
+
+    @keyframes rz-bottom-to-top {
+      0% {
+        opacity: 0;
+        transform: translateY(10%);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    // * Print styles
+    // *
+    // * These styles are applied when the user prints the page.
+    // * They are used to customize the printed page.
+    // *
+    // * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/@page}
+
+    @media print {
+      // * Set the margin of the page.
+      // *
+      // * The value of `1.875rem` is used to align the content with the
+      // * default margin of the page.
+
+      @page {
+        margin: 1.875rem; // 30px
+      }
+
+      // * Show the URL of the link.
+      // *
+      // * This is useful for users who want to know the URL of the link
+      // * when they print the page.
+
+      a[href^="http"]::after {
+        content: " (" attr(href) ")";
+      }
+    }
+
+    /* This is for accessibility purposes */
+    // * This class is used to hide the content visually but keep it accessible
+    // * to screen readers.
+    // *
+    // * This class is useful for hiding the content that is not visible
+    // * but should be accessible to screen readers.
+    // *
+    // * It is also useful for hiding the content that is not visible
+    // * but should be accessible to assistive technologies.
+    // *
+    // * The class is used to hide the content visually but keep it accessible
+    // * to screen readers. It is also used to hide the content that is not visible
+    // * but should be accessible to assistive technologies.
+    // *
+    // * The content will be hidden visually but will be accessible to screen readers.
+    // * It will also be hidden from assistive technologies.
+    // *
+    // * The content will be read by screen readers and will be accessible to assistive
+    // * technologies.
+
+    .sr-only {
+      --rz-sr-only-width: 1px;
+      --rz-sr-only-height: 1px;
+
+      inline-size: var(--rz-sr-only-width, 1px);
+      width: var(--rz-sr-only-width, 1px);
+      block-size: var(--rz-sr-only-height, 1px);
+      height: var(--rz-sr-only-height, 1px);
+      border: 0;
+      margin: -1px;
+      padding: 0;
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    /* This is for accessibility purposes */
+    // * This class is used to show the content visually and make it accessible
+    // * to screen readers.
+    // *
+    // * This class is useful for showing the content that is not visible
+    // * but should be accessible to screen readers.
+    // *
+    // * It is also useful for showing the content that is not visible
+    // * but should be accessible to assistive technologies.
+    // *
+    // * The class is used to show the content visually and make it accessible
+    // * to screen readers. It is also used to show the content that is not visible
+    // * but should be accessible to assistive technologies.
+    // *
+    // * The content will be visible and will be accessible to screen readers.
+    // * It will also be visible to assistive technologies.
+    // *
+    // * The content will be read by screen readers and will be accessible to assistive
+    // * technologies.
+
+    .not-sr-only {
+      --rz-not-sr-only-width: auto;
+      --rz-not-sr-only-height: auto;
+
+      inline-size: var(--rz-not-sr-only-width, auto);
+      width: var(--rz-not-sr-only-width, auto);
+      block-size: var(--rz-not-sr-only-height, auto);
+      height: var(--rz-not-sr-only-height, auto);
+      position: static;
+      padding: 0;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      white-space: normal;
+    }
+}

@@ -33,10 +33,12 @@
     "type": "git"
   },
   "scripts": {
-    "dev": "concurrently \"yarn scss:watch\" \"yarn lint\" \"yarn postcss:watch\" \"yarn min:css\"",
-    "scss:watch": "sass ./src/reset-zone.scss:dist/reset-zone.css --no-source-map --watch && postcss dist/reset-zone.css --replace --config postcss.config.js",
-    "postcss:watch": "postcss dist/reset-zone.css --dir dist --use autoprefixer --watch --no-map",
-    "min:css": "nodemon --watch ./dist/reset-zone.css --exec 'yarn postcss dist/reset-zone.css -o dist/reset-zone.min.css'",
+    "dev": "concurrently \"yarn scss:watch\" \"yarn scss:layer:watch\" \"yarn lint\" \"yarn postcss:watch\" \"yarn min:css\" \"yarn min:layer:css\"",
+    "scss:watch": "sass ./src/reset-zone.regular.scss:dist/reset-zone.regular.css --no-source-map --watch && postcss dist/reset-zone.regular.css --replace --config postcss.config.js",
+    "scss:layer:watch": "sass ./src/reset-zone.layer.scss:dist/reset-zone.layer.css --no-source-map --watch && postcss dist/reset-zone.layer.css --replace --config postcss.config.js",
+    "postcss:watch": "postcss ./dist/reset-zone.regular.css ./dist/reset-zone.layer.css --dir dist --use autoprefixer --watch --no-map",
+    "min:css": "nodemon --watch ./dist/reset-zone.regular.css --exec 'yarn postcss ./dist/reset-zone.regular.css -o ./dist/reset-zone.regular.min.css'",
+    "min:layer:css": "nodemon --watch ./dist/reset-zone.layer.css --exec 'yarn postcss ./dist/reset-zone.layer.css -o ./dist/reset-zone.layer.min.css'",
     "lint": "yarn stylelint \"./src/**/*.scss\" --fix",
     "upgrade": "ncu --upgrade",
     "cmt": "cz",
