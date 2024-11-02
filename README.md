@@ -29,19 +29,25 @@ After installation, you can simply import the CSS file at the top of your main s
 
 If you're using a bundler like Webpack, import it at the top of your main CSS or SCSS file (or any CSS preprocessors):
 
-```bash
+```css
 @import '/go/to/node_modules/reset-zone/dist/reset-zone.css';
 ```
 
 Or minified version:
 
-```bash
+```css
 @import '/go/to/node_modules/reset-zone/dist/reset-zone.min.css';
 ```
 
 Or, if using JavaScript to manage styles:
-```bash
+```javascript
 import '/go/to/node_modules/reset-zone/dist/reset-zone.css';
+```
+
+Or, you can use it into link tag of your HTML:
+
+```html
+<link rel="stylesheet" href="https://raw.githubusercontent.com/Black-Axis/reset-zone/master/dist/reset-zone.min.css">
 ```
 
 This will apply the reset styles globally, ensuring a consistent baseline across browsers.
