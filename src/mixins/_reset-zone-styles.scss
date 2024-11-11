@@ -306,6 +306,66 @@
       font-style: italic;
     }
 
+    // * Set default styles for the fieldset element.
+    // *
+    // * - The `--rz-fieldset-min-width` variable are defined to allow easy
+    // *   customization of the fieldset's minimum width.
+    // * - `min-inline-size` and `min-width` are set to ensure that the fieldset
+    // *   does not shrink below the specified minimum width.
+    // * - `border: none;` removes the default border around the fieldset,
+    // *   providing a clean, unstyled appearance. This is important for creating
+    // *   consistent styling across different browsers and user agents.
+
+    fieldset {
+      --rz-fieldset-min-width: 0;
+
+      min-inline-size: var(--rz-fieldset-min-width, 0);
+      min-width: var(--rz-fieldset-min-width, 0);
+      border: none;
+    }
+
+    // * Set default styles for the `legend` element.
+    // *
+    // * - `--rz-legend-width` and `--rz-legend-max-width` are defined to allow
+    // *   easy customization of the legend's width and maximum width.
+    // * - `inline-size` and `width` are set to ensure that the legend does not
+    // *   shrink below the specified width.
+    // * - `max-inline-size` and `max-width` are set to ensure that the legend
+    // *   does not grow beyond the specified maximum width.
+    // * - `border: none;` removes the default border around the legend,
+    // *   providing a clean, unstyled appearance. This is important for creating
+    // *   consistent styling across different browsers and user agents.
+    // * - `display: block;` sets the legend to be a block element, which
+    // *   is important for accessibility purposes, as it allows screen readers
+    // *   to properly interpret the legend.
+    // * - `float: none;` is set to prevent the legend from being floated,
+    // *   which can cause accessibility issues in some browsers.
+    // * - `font: inherit;` ensures that the legend inherits the font styles
+    // *   from its parent element.
+    // * - `text-align: start;` sets the text alignment of the legend to be
+    // *   start-aligned.
+    // * - `color: inherit;` ensures that the legend inherits the text color
+    // *   from its parent element.
+    // * - `background: none;` removes the default background color of the
+    // *   legend, providing a clean, unstyled appearance.
+
+    legend {
+      --rz-legend-width: auto;
+      --rz-legend-max-width: none;
+
+      inline-size: var(--rz-legend-width, auto);
+      width: var(--rz-legend-width, auto);
+      max-inline-size: var(--rz-legend-max-width, none);
+      max-width: var(--rz-legend-max-width, none);
+      border: none;
+      display: block;
+      float: none;
+      font: inherit;
+      text-align: start;
+      color: inherit;
+      background: none;
+    }
+
     // * Inherit fonts for inputs and buttons
     // *
     // * This is a common accessibility problem in web development. If
