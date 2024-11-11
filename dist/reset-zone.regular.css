@@ -181,6 +181,13 @@ q::after {
   content: none;
 }
 
+bdi,
+bdo {
+  unicode-bidi: -webkit-isolate;
+  unicode-bidi: -moz-isolate;
+  unicode-bidi: isolate;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

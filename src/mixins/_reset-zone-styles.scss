@@ -411,6 +411,33 @@
       }
     }
 
+    // * Set the `unicode-bidi` property to `isolate` on bdi and bdo elements
+    // *
+    // * The `unicode-bidi` property is used to control the direction of text
+    // * in bi-directional text.
+    // *
+    // * The `isolate` value is used to isolate the element from the surrounding
+    // * text, so that the direction of the text inside the element is not
+    // * affected by the surrounding text.
+    // *
+    // * The bdi element is used to indicate that the text inside the element
+    // * is a bi-directional isolation, and that the direction of the text
+    // * inside the element is independent of the surrounding text.
+    // *
+    // * The bdo element is used to indicate that the text inside the element
+    // * is a bi-directional override, and that the direction of the text
+    // * inside the element should be overridden to be the same as the
+    // * direction of the element.
+    // *
+    // * For more information, see the MDN documentation on the unicode-bidi
+    // * property:
+    // * https://developer.mozilla.org/en-US/docs/Web/CSS/unicode-bidi
+
+    bdi,
+    bdo {
+      unicode-bidi: isolate;
+    }
+
     // * Removes spacing between cells in tables
     // *
     // * The `border-collapse: collapse;` property is used to collapse
