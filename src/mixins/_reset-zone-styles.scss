@@ -308,9 +308,8 @@
 
     // * Set default styles for the fieldset element.
     // *
-    // * - The `--rz-fieldset-min-width` and `--rz-fieldset-padding` variables
-    // *   are defined to allow easy customization of the fieldset's minimum
-    // *   width and padding.
+    // * - The `--rz-fieldset-min-width` variable are defined to allow easy
+    // *   customization of the fieldset's minimum width.
     // * - `min-inline-size` and `min-width` are set to ensure that the fieldset
     // *   does not shrink below the specified minimum width.
     // * - `border: none;` removes the default border around the fieldset,
@@ -319,7 +318,6 @@
 
     fieldset {
       --rz-fieldset-min-width: 0;
-      --rz-fieldset-padding: 0;
 
       min-inline-size: var(--rz-fieldset-min-width, 0);
       min-width: var(--rz-fieldset-min-width, 0);

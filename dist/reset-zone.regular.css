@@ -143,7 +143,6 @@ figcaption {
 
 fieldset {
   --rz-fieldset-min-width: 0;
-  --rz-fieldset-padding: 0;
   min-inline-size: var(--rz-fieldset-min-width, 0);
   min-width: var(--rz-fieldset-min-width, 0);
   border: none;
