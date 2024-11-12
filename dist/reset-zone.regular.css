@@ -196,6 +196,19 @@ bdo {
   unicode-bidi: isolate;
 }
 
+pre,
+code,
+kbd,
+samp {
+  --rz-code-font: courier, monospace;
+  font-family: var(--rz-code-font, inherit);
+  font-size: inherit;
+  white-space: pre-wrap;
+  -moz-tab-size: 2;
+    -o-tab-size: 2;
+       tab-size: 2;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;

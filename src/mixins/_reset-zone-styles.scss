@@ -446,6 +446,23 @@
       unicode-bidi: isolate;
     }
 
+    // * Reset for preformatted text and code elements
+    // *
+    // * Remove default monospace fonts and ensure consistent
+    // * presentation of code blocks while maintaining readability
+
+    pre,
+    code,
+    kbd,
+    samp {
+      --rz-code-font: courier, monospace;
+
+      font-family: var(--rz-code-font, inherit);
+      font-size: inherit;
+      white-space: pre-wrap;
+      tab-size: 2;
+    }
+
     // * Removes spacing between cells in tables
     // *
     // * The `border-collapse: collapse;` property is used to collapse
