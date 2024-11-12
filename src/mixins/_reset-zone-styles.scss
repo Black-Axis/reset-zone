@@ -375,7 +375,15 @@
     input,
     button,
     textarea,
-    select {
+    select,
+    option,
+    mark,
+    small,
+    dfn,
+    abbr,
+    cite,
+    time,
+    data {
       font: inherit;
     }
 
