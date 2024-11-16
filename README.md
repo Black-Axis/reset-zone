@@ -32,13 +32,13 @@ If you're using a bundler like Webpack, import it at the top of your main CSS or
 For using SCSS regular version:
 
 ```scss
-@use "../../../Long-Projects/reset-zone/src/reset-zone.regular.scss" as ResetZoneLibraryWithCSSRegular;
+@use "/go/to/node_modules/reset-zone/src/reset-zone.regular.scss" as ResetZoneLibraryWithCSSRegular;
 ```
 
 For using SCSS layer version:
 
 ```scss
-@use "../../../Long-Projects/reset-zone/src/reset-zone.layer.scss" as ResetZoneLibraryWithCSSLayer;
+@use "/go/to/node_modules/reset-zone/src/reset-zone.layer.scss" as ResetZoneLibraryWithCSSLayer;
 ```
 
 ⭕ But the previous ways is not recommended.
