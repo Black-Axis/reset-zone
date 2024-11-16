@@ -178,6 +178,15 @@
     unicode-bidi: -moz-isolate;
     unicode-bidi: isolate;
   }
+  hr {
+    --rz-hr-height: 1px;
+    --rz-hr-border: none;
+    height: var(--rz-hr-height);
+    block-size: var(--rz-hr-height);
+    border: var(--rz-hr-border, none);
+    background: currentColor;
+    opacity: 0.1;
+  }
   pre,
   code,
   kbd,

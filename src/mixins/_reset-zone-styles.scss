@@ -446,6 +446,38 @@
       unicode-bidi: isolate;
     }
 
+    // * Reset styles for hr elements
+    // *
+    // * The hr element is a semantic element that represents a thematic break
+    // * between paragraphs of text. It is often displayed as a horizontal line.
+    // *
+    // * The default styles for the hr element are removed, and the following
+    // * styles are applied:
+    // *
+    // *   - `height` is set to `1px` to create a thin line.
+    // *   - `block-size` is set to `1px` to create a thin line.
+    // *   - `border` is set to `none` to remove any borders.
+    // *   - `background` is set to `currentColor` to set the background color
+    // *     of the horizontal line to the current color of the element.
+    // *   - `opacity` is set to `0.1` to make the horizontal line slightly
+    // *     transparent.
+    // *
+    // * These styles are applied to ensure that the hr element is displayed
+    // * consistently across different browsers.
+
+    hr {
+      --rz-hr-height: 1px;
+      --rz-hr-border: none;
+
+      height: var(--rz-hr-height);
+      block-size: var(--rz-hr-height);
+      border: var(--rz-hr-border, none);
+
+      // stylelint-disable-next-line value-keyword-case
+      background: currentColor;
+      opacity: 0.1;
+    }
+
     // * Reset for preformatted text and code elements
     // *
     // * Remove default monospace fonts and ensure consistent
