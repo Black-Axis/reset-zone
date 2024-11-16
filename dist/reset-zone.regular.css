@@ -82,7 +82,9 @@ img,
 picture,
 video,
 canvas,
-svg {
+svg,
+meter,
+progress {
   display: block;
 }
 
@@ -135,6 +137,35 @@ svg {
      background-size: cover;
   -webkit-shape-margin: 1rem;
           shape-margin: 1rem;
+}
+
+meter,
+progress {
+  --rz-measure-width: 100%;
+  --rz-measure-max-width: -webkit-calc(100% - 1rem);
+  --rz-measure-max-width: -moz-calc(100% - 1rem);
+  --rz-measure-max-width: calc(100% - 1rem);
+  --rz-measure-height: 1.25rem;
+  width: var(--rz-measure-width);
+  inline-size: var(--rz-measure-width);
+  max-width: var(--rz-measure-max-width);
+  max-inline-size: var(--rz-measure-max-width);
+  height: var(--rz-measure-height);
+  block-size: var(--rz-measure-height);
+  margin-block: 0.5rem;
+  padding-inline: 0.5rem;
+}
+meter::-webkit-progress-bar,
+progress::-webkit-progress-bar {
+  background-color: transparent;
+}
+meter::-webkit-progress-value,
+progress::-webkit-progress-value {
+  background-color: currentColor;
+}
+meter::-moz-progress-bar,
+progress::-moz-progress-bar {
+  background-color: currentColor;
 }
 
 figcaption {
