@@ -419,6 +419,28 @@
       }
     }
 
+    // * Hide all children of the details element except for the summary
+    // * element if the open attribute is not set on the details element.
+    // *
+    // * The open attribute is used to control the visibility of the details
+    // * element. If the open attribute is set, the details element is visible,
+    // * and if it is not set, the details element is hidden.
+    // *
+    // * The `:not([open])` pseudo-class is used to select all details elements
+    // * that do not have the open attribute set.
+    // *
+    // * The `>*:not(summary)` selector is used to select all children of the
+    // * details element except for the summary element.
+    // *
+    // * The `display: none` property is used to hide the selected elements.
+    // *
+
+    details {
+      &:not([open])>*:not(summary) {
+          display: none;
+      }
+    }
+
     // * Set the `unicode-bidi` property to `isolate` on bdi and bdo elements
     // *
     // * The `unicode-bidi` property is used to control the direction of text

@@ -172,6 +172,9 @@
   q::after {
     content: none;
   }
+  details:not([open]) > *:not(summary) {
+    display: none;
+  }
   bdi,
   bdo {
     unicode-bidi: -webkit-isolate;
