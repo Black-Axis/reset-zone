@@ -170,6 +170,7 @@
     // *
     // * `main, header, footer, section, article, aside, nav, menu, details,
     // * summary, figcaption, figure, hgroup, img, picture, video, canvas, svg`
+    // * meter, progress`.
 
     main,
     header,
@@ -188,7 +189,9 @@
     picture,
     video,
     canvas,
-    svg {
+    svg,
+    meter,
+    progress {
       display: block;
 
     }
@@ -295,6 +298,60 @@
       background-repeat: no-repeat;
       background-size: cover;
       shape-margin: 1rem;
+    }
+
+    // * Default styles for `meter` and `progress` elements.
+    // *
+    // * The following CSS properties are applied to ensure consistent styling
+    // * across different browsers for the meter and progress elements:
+    // *
+    // * - `--rz-measure-width: 100%;` sets the default width to full width.
+    // * - `--rz-measure-max-width: calc(100% - 1rem);` ensures there is padding
+    // *   around the element, making it responsive and preventing overflow.
+    // * - `--rz-measure-height: 1.25rem;` sets a consistent height for both elements.
+    // *
+    // * These variables are used to define the element's width and height,
+    // * providing flexibility and ease of customization.
+    // *
+    // * Additional styles:
+    // * - `margin-block: 0.5rem;` adds vertical spacing around the elements.
+    // * - `padding-inline: 0.5rem;` ensures there is padding within the element.
+    // *
+    // * The styles for the pseudo-elements for webkit and moz browsers ensure
+    // * a consistent appearance for the progress bar.
+    // * - `background-color: transparent;` sets the progress bar track to be
+    // *   transparent.
+    // * - `background-color: currentColor;` sets the progress fill color to match
+    // *   the current font color.
+
+    meter,
+    progress {
+        --rz-measure-width: 100%;
+        --rz-measure-max-width: calc(100% - 1rem);
+        --rz-measure-height: 1.25rem;
+
+        width: var(--rz-measure-width);
+        inline-size: var(--rz-measure-width);
+        max-width: var(--rz-measure-max-width);
+        max-inline-size: var(--rz-measure-max-width);
+        height: var(--rz-measure-height);
+        block-size: var(--rz-measure-height);
+        margin-block: 0.5rem;
+        padding-inline: 0.5rem;
+
+        &::-webkit-progress-bar {
+            background-color: transparent;
+        }
+
+        &::-webkit-progress-value {
+            // stylelint-disable-next-line value-keyword-case
+            background-color: currentColor;
+        }
+
+        &::-moz-progress-bar {
+            // stylelint-disable-next-line value-keyword-case
+            background-color: currentColor;
+        }
     }
 
     // * Set default styles for figcaption
