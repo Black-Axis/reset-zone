@@ -75,6 +75,8 @@ nav,
 menu,
 details,
 summary,
+object,
+embed,
 figcaption,
 figure,
 hgroup,
@@ -125,10 +127,7 @@ picture,
 video,
 canvas,
 svg {
-  --rz-asset-max-width: 100%;
   --rz-asset-height: auto;
-  max-inline-size: var(--rz-asset-max-width, 100%);
-  max-width: var(--rz-asset-max-width, 100%);
   block-size: var(--rz-asset-height, auto);
   height: var(--rz-asset-height, auto);
   font-style: italic;
@@ -137,6 +136,23 @@ svg {
      background-size: cover;
   -webkit-shape-margin: 1rem;
           shape-margin: 1rem;
+}
+
+img,
+picture,
+video,
+canvas,
+svg,
+object,
+embed {
+  --rz-asset-max-width: 100%;
+  max-inline-size: var(--rz-asset-max-width, 100%);
+  max-width: var(--rz-asset-max-width, 100%);
+}
+
+object,
+embed {
+  border: none;
 }
 
 meter,

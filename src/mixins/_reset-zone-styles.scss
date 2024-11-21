@@ -169,8 +169,8 @@
     // * set to `block`:
     // *
     // * `main, header, footer, section, article, aside, nav, menu, details,
-    // * summary, figcaption, figure, hgroup, img, picture, video, canvas, svg`
-    // * meter, progress`.
+    // * summary, object, embed, figcaption, figure, hgroup, img, picture, video,
+    // * canvas, svg`, meter, progress`.
 
     main,
     header,
@@ -182,6 +182,8 @@
     menu,
     details,
     summary,
+    object,
+    embed,
     figcaption,
     figure,
     hgroup,
@@ -193,7 +195,6 @@
     meter,
     progress {
       display: block;
-
     }
 
     // * Set default styles for sub and sup HTML elements.
@@ -269,8 +270,6 @@
 
     // * Set default styles for images, videos, canvases, and SVGs
     // *
-    // * - `max-inline-size` and `max-width` are set to `100%` so that the
-    // *   element will not exceed the width of its container.
     // * - `block-size` and `height` are set to `auto` so that the element
     // *   will not exceed the height of its container.
     // * - `font-style: italic;` is set to prevent any font styles from being
@@ -287,17 +286,56 @@
     video,
     canvas,
     svg {
-      --rz-asset-max-width: 100%;
       --rz-asset-height: auto;
 
-      max-inline-size: var(--rz-asset-max-width, 100%);
-      max-width: var(--rz-asset-max-width, 100%);
       block-size: var(--rz-asset-height, auto);
       height: var(--rz-asset-height, auto);
       font-style: italic;
       background-repeat: no-repeat;
       background-size: cover;
       shape-margin: 1rem;
+    }
+
+    // * Set default styles for:
+    // * `img`, `picture`, `video`, `canvas`, `svg`, `object` and `embed` elements.
+    // *
+    // * The following CSS properties are applied to ensure consistent styling
+    // * across different browsers for these elements:
+    // *
+    // * - `max-inline-size` and `max-width` are set to `100%` so that the
+    // *   element will not exceed the width of its container.
+    // *
+    // * Note: The `--rz-asset-max-width` variable is used to allow users to
+    // * override the default value of `100%`.
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg,
+    object,
+    embed {
+      --rz-asset-max-width: 100%;
+
+      max-inline-size: var(--rz-asset-max-width, 100%);
+      max-width: var(--rz-asset-max-width, 100%);
+    }
+
+    // * Remove border from object and embed elements.
+    // *
+    // * The object and embed elements have a default border that is not
+    // * visually appealing. Therefore, we remove the border by setting
+    // * `border` to `none`.
+    // *
+    // * Note: This is a minimal reset and only applies to the object and
+    // * embed elements. Other elements may still have a default border.
+    // *
+    // * To customize the border, you can use the following CSS properties:
+    // * `border-width`, `border-style`, `border-color`, `border-radius`, etc.
+
+    object,
+    embed {
+      border: none;
     }
 
     // * Default styles for `meter` and `progress` elements.
