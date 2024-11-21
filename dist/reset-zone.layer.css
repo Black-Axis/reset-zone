@@ -295,6 +295,30 @@
   :focus {
     scroll-padding-block-end: 8vh;
   }
+  ::-webkit-input-placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
+  :-moz-placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
+  ::-moz-placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
+  :-ms-input-placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
+  ::-ms-input-placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
+  ::placeholder {
+    color: inherit;
+    opacity: 0.5;
+  }
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

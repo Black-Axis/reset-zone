@@ -832,6 +832,31 @@
       scroll-padding-block-end: 8vh;
     }
 
+    // * Set the color and opacity of placeholder text.
+    // *
+    // * This is important for accessibility and usability, as it ensures that
+    // * the placeholder text is visible and readable. The value of 0.5 is used
+    // * to balance the importance of the placeholder text with the importance
+    // * of the content.
+    // *
+    // * The `::placeholder` pseudo-element is used to target the placeholder
+    // * text of form elements. For example, the following HTML will apply the
+    // * styles:
+    // * <input type="text" placeholder="Search">
+    // *
+    // * The `color` property is used to set the color of the placeholder text.
+    // * The value of `inherit` is used to inherit the color of the parent
+    // * element, which is the most common case.
+    // *
+    // * The `opacity` property is used to set the opacity of the placeholder
+    // * text. The value of `0.5` is used to balance the importance of the
+    // * placeholder text with the importance of the content.
+
+    ::placeholder {
+      color: inherit;
+      opacity: 0.5;
+    }
+
     // * Remove all animations, transitions and smooth scroll for
     // * people that prefer not to see them. This is important for
     // * accessibility and to prevent that users with small screens or
