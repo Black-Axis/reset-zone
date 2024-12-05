@@ -360,15 +360,30 @@ table {
        -moz-animation-duration: 0.01ms;
          -o-animation-duration: 0.01ms;
             animation-duration: 0.01ms;
+    -webkit-animation-delay: -1ms;
+       -moz-animation-delay: -1ms;
+         -o-animation-delay: -1ms;
+            animation-delay: -1ms;
     -webkit-animation-iteration-count: 1;
        -moz-animation-iteration-count: 1;
          -o-animation-iteration-count: 1;
             animation-iteration-count: 1;
-    -webkit-transition-duration: 0.01ms;
-       -moz-transition-duration: 0.01ms;
-         -o-transition-duration: 0.01ms;
-            transition-duration: 0.01ms;
+    -webkit-transition-duration: 0s;
+       -moz-transition-duration: 0s;
+         -o-transition-duration: 0s;
+            transition-duration: 0s;
+    -webkit-transition-delay: 0s;
+       -moz-transition-delay: 0s;
+         -o-transition-delay: 0s;
+            transition-delay: 0s;
     scroll-behavior: auto;
+    background-attachment: initial;
+    -webkit-perspective: none;
+       -moz-perspective: none;
+            perspective: none;
+    -webkit-transform-style: flat;
+       -moz-transform-style: flat;
+            transform-style: flat;
   }
 }
 dialog {

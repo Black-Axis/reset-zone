@@ -875,6 +875,16 @@
     // * browser or the user agent to apply any transitions.
     // * `scroll-behavior` is set to `auto` to prevent that the browser or
     // * the user agent to apply any smooth scroll.
+    // * `animation-delay` is set to `-1ms` to prevent that the browser or
+    // * the user agent to apply any animations.
+    // * `background-attachment` is set to `initial` to prevent that the
+    // * browser or the user agent to apply any background attachment.
+    // * `transition-delay` is set to `0s` to prevent that the browser or
+    // * the user agent to apply any transitions.
+    // * `perspective` is set to `none` to prevent that the browser or
+    // * the user agent to apply any 3D transforms.
+    // * `transform-style` is set to `flat` to prevent that the browser or
+    // * the user agent to apply any 3D transforms.
     // *
     // * The `prefers-reduced-motion` media query is used to detect if
     // * the user prefers reduced motion. If the user prefers reduced
@@ -887,9 +897,14 @@
       *::before,
       *::after {
         animation-duration: 0.01ms;
+        animation-delay: -1ms;
         animation-iteration-count: 1;
-        transition-duration: 0.01ms;
+        transition-duration: 0s;
+        transition-delay: 0s;
         scroll-behavior: auto;
+        background-attachment: initial;
+        perspective: none;
+        transform-style: flat;
       }
     }
 
