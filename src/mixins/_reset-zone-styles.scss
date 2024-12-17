@@ -786,6 +786,24 @@
       cursor: pointer;
     }
 
+    // * Change the cursor to the default cursor when the aria-disabled attribute is
+    // * set on an element.
+    // *
+    // * The aria-disabled attribute is used to indicate that an element is currently
+    // * disabled. When this attribute is set, the element should be inaccessible to
+    // * the user until it is re-enabled.
+    // *
+    // * This rule is used to provide a visual indication to the user that the
+    // * element is currently disabled and that it cannot be interacted with.
+    // *
+    // * For more information on the aria-disabled attribute, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled
+
+    [aria-disabled] {
+      cursor: default;
+    }
+
     // * The focus-visible pseudo-class is supported in modern browsers.
     // * It is used to indicate if the browser is currently allowing the
     // * user to focus on the element.
