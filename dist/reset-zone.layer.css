@@ -277,6 +277,18 @@
       display: none;
     }
   }
+  audio :not([controls]) {
+    display: none;
+  }
+  [aria-busy=true] {
+    cursor: progress;
+  }
+  [aria-controls] {
+    cursor: pointer;
+  }
+  [aria-disabled] {
+    cursor: default;
+  }
   @supports selector(:focus-visible) {
     :focus-visible {
       outline: max(1px, 0.15em) solid currentColor;
