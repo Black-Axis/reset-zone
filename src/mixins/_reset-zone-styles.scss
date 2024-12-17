@@ -769,6 +769,23 @@
       cursor: progress;
     }
 
+    // * Change the cursor to a pointing hand when the aria-controls attribute is
+    // * set on an element.
+    // *
+    // * The aria-controls attribute is used to indicate that an element controls
+    // * the content of another element. When this attribute is set, the element
+    // * should be clickable and should visually indicate to the user that
+    // * clicking on it will control the content of the other element.
+    // *
+    // * This rule is used to provide a visual indication to the user that the
+    // * element can be clicked to control the content of the other element.
+    // *
+    // * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls
+
+    [aria-controls] {
+      cursor: pointer;
+    }
+
     // * The focus-visible pseudo-class is supported in modern browsers.
     // * It is used to indicate if the browser is currently allowing the
     // * user to focus on the element.
