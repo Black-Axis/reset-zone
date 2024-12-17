@@ -751,6 +751,24 @@
       }
     }
 
+     // * Change the cursor to a progress indicator when the aria-busy state is
+     // * set to true.
+     // *
+     // * The aria-busy state is used to indicate that an element is currently
+     // * performing an action such as loading or processing data. When the
+     // * aria-busy state is set to true, the element should be inaccessible to
+     // * the user until the action is complete.
+     // *
+     // * This rule is used to provide a visual indication to the user that an
+     // * action is currently in progress and that the element should not be
+     // * interacted with until the action is complete.
+     // *
+     // * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy
+
+    [aria-busy="true"] {
+      cursor: progress;
+    }
+
     // * The focus-visible pseudo-class is supported in modern browsers.
     // * It is used to indicate if the browser is currently allowing the
     // * user to focus on the element.
