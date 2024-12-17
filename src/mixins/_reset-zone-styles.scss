@@ -727,6 +727,30 @@
       }
     }
 
+    // * Hide audio elements that do not have a controls attribute.
+    // * This is useful for preventing audio elements from being rendered
+    // * when they do not have any visible controls.
+    // *
+    // * The :not pseudo-class is used to select all audio elements that
+    // * do not have a controls attribute. The [controls] attribute is
+    // * used to indicate that the audio element should have visible controls.
+    // *
+    // * The display property is set to none to hide the audio element.
+    // *
+    // * For more information on the :not pseudo-class, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:not
+    // *
+    // * For more information on the controls attribute, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+
+    audio {
+      :not([controls]) {
+        display: none;
+      }
+    }
+
     // * The focus-visible pseudo-class is supported in modern browsers.
     // * It is used to indicate if the browser is currently allowing the
     // * user to focus on the element.
