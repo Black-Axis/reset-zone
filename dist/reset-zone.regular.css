@@ -275,6 +275,10 @@ table {
   border-spacing: 0;
 }
 
+br + br {
+  display: none;
+}
+
 @supports selector(:is) {
   body > :is(header, footer),
   main,

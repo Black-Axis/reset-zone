@@ -629,6 +629,27 @@
       border-spacing: 0;
     }
 
+    // * Hide the second consecutive line break
+    // *
+    // * When there are two or more consecutive line breaks, the first one
+    // * is rendered as a line break, and the second one is rendered as an
+    // * empty block element. This is a default behavior in HTML. By hiding
+    // * the second line break, we can prevent this empty block element from
+    // * being rendered.
+    // *
+    // * This is useful for rendering Markdown code blocks and other types of
+    // * content that use line breaks to separate sections.
+    // *
+    // * The selector `br + br` selects the second line break element that
+    // * follows the first line break element. The `display: none;` property
+    // * is used to hide the second line break element.
+    // *
+    // * This is useful for CMS users.
+
+    br + br {
+      display: none;
+    }
+
     // * The following code enables container queries for the following
     // * elements:
     // *
