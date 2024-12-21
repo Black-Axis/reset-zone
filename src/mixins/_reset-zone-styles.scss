@@ -955,6 +955,26 @@
       opacity: 0.5;
     }
 
+    // * Hide all empty elements.
+    // *
+    // * This is important for accessibility and usability, as it ensures that
+    // * the content is visible and readable. Empty elements can be a problem
+    // * for screen readers and other assistive technologies, as they can
+    // * cause the user to jump to the next element unexpectedly.
+    // *
+    // * The `:empty` pseudo-element is used to target all empty elements.
+    // * The `display` property is set to `none` to hide the element.
+    // *
+    // * For example, the following HTML will apply the styles:
+    // * <div class="error-message"></div>
+    // *
+    // * The element will be hidden, as it is empty.
+    // * This is useful for CMS users also.
+
+    :empty {
+      display: none;
+    }
+
     // * Remove all animations, transitions and smooth scroll for
     // * people that prefer not to see them. This is important for
     // * accessibility and to prevent that users with small screens or
