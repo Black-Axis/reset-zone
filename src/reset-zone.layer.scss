@@ -21,8 +21,19 @@
 
 // @repository: https://github.com/Black-Axis/reset-zone
 
-@mixin reset-zone-layer() {
-  @layer reset-zone {
+// @param {String} $layer-name - The name of the layer.
+// @default reset-zone
+
+// @example 1
+// @include reset-zone-layer;
+
+// @example 2
+// @include reset-zone-layer('general-reset');
+
+@mixin reset-zone-layer($layer-name: reset-zone) {
+  @layer #{$layer-name} {
     @include Core.reset-zone;
   }
 }
+
+@include reset-zone-layer;
