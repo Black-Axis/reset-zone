@@ -70,10 +70,7 @@
     // * to zoom in and out to see the content.
 
     body {
-      --rz-body-min-height: 100dvh;
-
-      min-block-size: var(--rz-body-min-height, 100dvh);
-      min-height: var(--rz-body-min-height, 100dvh);
+      min-height: 100dvh;
       line-height: 1.5;
 
       // * Improve text rendering in the browsers
@@ -239,7 +236,7 @@
 
     // * Set default styles for images, videos, canvases, and SVGs
     // *
-    // * - `block-size` and `height` are set to `auto` so that the element
+    // * - `height` are set to `auto` so that the element
     // *   will not exceed the height of its container.
     // * - `font-style: italic;` is set to prevent any font styles from being
     // *   inherited from the parent element.
@@ -255,10 +252,7 @@
     video,
     canvas,
     svg {
-      --rz-asset-height: auto;
-
-      block-size: var(--rz-asset-height, auto);
-      height: var(--rz-asset-height, auto);
+      height: auto;
       font-style: italic;
       background-repeat: no-repeat;
       background-size: cover;
@@ -271,7 +265,7 @@
     // * The following CSS properties are applied to ensure consistent styling
     // * across different browsers for these elements:
     // *
-    // * - `max-inline-size` and `max-width` are set to `100%` so that the
+    // * - `max-width` are set to `100%` so that the
     // *   element will not exceed the width of its container.
     // *
     // * Note: The `--rz-asset-max-width` variable is used to allow users to
@@ -284,10 +278,7 @@
     svg,
     object,
     embed {
-      --rz-asset-max-width: 100%;
-
-      max-inline-size: var(--rz-asset-max-width, 100%);
-      max-width: var(--rz-asset-max-width, 100%);
+      max-width: 100%;
     }
 
     // * Remove border from object and embed elements.
@@ -333,16 +324,9 @@
 
     meter,
     progress {
-        --rz-measure-width: 100%;
-        --rz-measure-max-width: calc(100% - 1rem);
-        --rz-measure-height: 1.25rem;
-
-        width: var(--rz-measure-width);
-        inline-size: var(--rz-measure-width);
-        max-width: var(--rz-measure-max-width);
-        max-inline-size: var(--rz-measure-max-width);
-        height: var(--rz-measure-height);
-        block-size: var(--rz-measure-height);
+        width: 100%;
+        max-width: calc(100% - 1rem);
+        height: 1.25rem;
         margin-block: 0.5rem;
         padding-inline: 0.5rem;
 
@@ -374,17 +358,14 @@
     // *
     // * - The `--rz-fieldset-min-width` variable are defined to allow easy
     // *   customization of the fieldset's minimum width.
-    // * - `min-inline-size` and `min-width` are set to ensure that the fieldset
+    // * - `min-width` are set to ensure that the fieldset
     // *   does not shrink below the specified minimum width.
     // * - `border: none;` removes the default border around the fieldset,
     // *   providing a clean, unstyled appearance. This is important for creating
     // *   consistent styling across different browsers and user agents.
 
     fieldset {
-      --rz-fieldset-min-width: 0;
-
-      min-inline-size: var(--rz-fieldset-min-width, 0);
-      min-width: var(--rz-fieldset-min-width, 0);
+      min-width: 0;
       border: none;
     }
 
@@ -392,9 +373,9 @@
     // *
     // * - `--rz-legend-width` and `--rz-legend-max-width` are defined to allow
     // *   easy customization of the legend's width and maximum width.
-    // * - `inline-size` and `width` are set to ensure that the legend does not
+    // * - `width` are set to ensure that the legend does not
     // *   shrink below the specified width.
-    // * - `max-inline-size` and `max-width` are set to ensure that the legend
+    // * - `max-width` are set to ensure that the legend
     // *   does not grow beyond the specified maximum width.
     // * - `border: none;` removes the default border around the legend,
     // *   providing a clean, unstyled appearance. This is important for creating
@@ -414,13 +395,8 @@
     // *   legend, providing a clean, unstyled appearance.
 
     legend {
-      --rz-legend-width: auto;
-      --rz-legend-max-width: none;
-
-      inline-size: var(--rz-legend-width, auto);
-      width: var(--rz-legend-width, auto);
-      max-inline-size: var(--rz-legend-max-width, none);
-      max-width: var(--rz-legend-max-width, none);
+      width: auto;
+      max-width: none;
       border: none;
       display: block;
       float: none;
@@ -541,7 +517,6 @@
     // * styles are applied:
     // *
     // *   - `height` is set to `1px` to create a thin line.
-    // *   - `block-size` is set to `1px` to create a thin line.
     // *   - `border` is set to `none` to remove any borders.
     // *   - `background` is set to `currentColor` to set the background color
     // *     of the horizontal line to the current color of the element.
@@ -552,12 +527,8 @@
     // * consistently across different browsers.
 
     hr {
-      --rz-hr-height: 1px;
-      --rz-hr-border: none;
-
-      height: var(--rz-hr-height);
-      block-size: var(--rz-hr-height);
-      border: var(--rz-hr-border, none);
+      height: 1px;
+      border: none;
 
       // stylelint-disable-next-line value-keyword-case
       background: currentColor;
@@ -1017,51 +988,37 @@
     // * dialog does not have any overscroll behavior.
 
     dialog {
-      --rz-dialog-max-width: 90%;
-      --rz-dialog-max-height: 85dvh;
-      --rz-dialog-padding-x: 1rem;
-      --rz-dialog-padding-y: 1.25rem;
-      --rz-dialog-border: 1px solid hsl(0deg 0% 91.81%);
-      --rz-dialog-scrollbar-bg: transparent;
-      --rz-dialog-scrollbar-width: none;
-
-      max-width: var(--rz-dialog-max-width, 90%);
-      max-inline-size: var(--rz-dialog-max-width, 90%);
-      max-height: var(--rz-dialog-max-height, 85dvh);
-      max-block-size: var(--rz-dialog-max-height, 85dvh);
+      max-width: 90%;
+      max-height: 85dvh;
       margin: auto;
       padding: 0;
-      border: var(--rz-dialog-border, 1px solid hsl(0deg 0% 91.81%));
+      border: 1px solid hsl(0deg 0% 91.81%);
       border-radius: 0.5rem;
       overscroll-behavior: contain;
       scroll-behavior: smooth;
 
       // Hide scrollbar for Firefox
-      scrollbar-width: var(--rz-dialog-scrollbar-width, none);
+      scrollbar-width: none;
 
       // Hide scrollbar for IE and Edge
-      // -ms-overflow-style: var(--rz-dialog-scrollbar-width);
-      scrollbar-color: var(--rz-dialog-scrollbar-bg, transparent) var(--rz-dialog-scrollbar-bg, transparent);
+      scrollbar-color: transparent transparent;
       animation: rz-bottom-to-top 0.25s ease-in-out forwards;
 
       @media only screen and (width > 767px) {
-        --rz-dialog-max-width: 45rem;
+        max-width: 45rem;
       }
 
       &::-webkit-scrollbar {
-        --rz-dialog-scrollbar-width: 0;
-
-        width: var(--rz-dialog-scrollbar-width, 0);
-        inline-size: var(--rz-dialog-scrollbar-width, 0);
+        width: 0;
         display: none;
       }
 
       &::-webkit-scrollbar-track {
-        background-color: var(--rz-dialog-scrollbar-bg, transparent);
+        background-color: transparent;
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: var(--rz-dialog-scrollbar-bg, transparent);
+        background-color: transparent;
       }
 
       &::backdrop {
@@ -1136,13 +1093,8 @@
     // * technologies.
 
     .sr-only {
-      --rz-sr-only-width: 1px;
-      --rz-sr-only-height: 1px;
-
-      inline-size: var(--rz-sr-only-width, 1px);
-      width: var(--rz-sr-only-width, 1px);
-      block-size: var(--rz-sr-only-height, 1px);
-      height: var(--rz-sr-only-height, 1px);
+      width: 1px;
+      height: 1px;
       border: 0;
       margin: -1px;
       padding: 0;
@@ -1173,13 +1125,8 @@
     // * technologies.
 
     .not-sr-only {
-      --rz-not-sr-only-width: auto;
-      --rz-not-sr-only-height: auto;
-
-      inline-size: var(--rz-not-sr-only-width, auto);
-      width: var(--rz-not-sr-only-width, auto);
-      block-size: var(--rz-not-sr-only-height, auto);
-      height: var(--rz-not-sr-only-height, auto);
+      width: auto;
+      height: auto;
       position: static;
       padding: 0;
       margin: 0;
