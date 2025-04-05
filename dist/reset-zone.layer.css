@@ -21,9 +21,7 @@
     }
   }
   body {
-    --rz-body-min-height: 100dvh;
-    min-block-size: var(--rz-body-min-height, 100dvh);
-    min-height: var(--rz-body-min-height, 100dvh);
+    min-height: 100dvh;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
   }
@@ -33,18 +31,6 @@
        -moz-hyphens: auto;
         -ms-hyphens: auto;
             hyphens: auto;
-  }
-  body,
-  h1,
-  h2,
-  h3,
-  h4,
-  p,
-  figure,
-  blockquote,
-  dl,
-  dd {
-    margin: 0;
   }
   p,
   h1,
@@ -116,9 +102,7 @@
   video,
   canvas,
   svg {
-    --rz-asset-height: auto;
-    block-size: var(--rz-asset-height, auto);
-    height: var(--rz-asset-height, auto);
+    height: auto;
     font-style: italic;
     background-repeat: no-repeat;
     -o-background-size: cover;
@@ -133,9 +117,7 @@
   svg,
   object,
   embed {
-    --rz-asset-max-width: 100%;
-    max-inline-size: var(--rz-asset-max-width, 100%);
-    max-width: var(--rz-asset-max-width, 100%);
+    max-width: 100%;
   }
   object,
   embed {
@@ -143,17 +125,11 @@
   }
   meter,
   progress {
-    --rz-measure-width: 100%;
-    --rz-measure-max-width: -webkit-calc(100% - 1rem);
-    --rz-measure-max-width: -moz-calc(100% - 1rem);
-    --rz-measure-max-width: calc(100% - 1rem);
-    --rz-measure-height: 1.25rem;
-    width: var(--rz-measure-width);
-    inline-size: var(--rz-measure-width);
-    max-width: var(--rz-measure-max-width);
-    max-inline-size: var(--rz-measure-max-width);
-    height: var(--rz-measure-height);
-    block-size: var(--rz-measure-height);
+    width: 100%;
+    max-width: -webkit-calc(100% - 1rem);
+    max-width: -moz-calc(100% - 1rem);
+    max-width: calc(100% - 1rem);
+    height: 1.25rem;
     margin-block: 0.5rem;
     padding-inline: 0.5rem;
   }
@@ -173,18 +149,12 @@
     font-style: italic;
   }
   fieldset {
-    --rz-fieldset-min-width: 0;
-    min-inline-size: var(--rz-fieldset-min-width, 0);
-    min-width: var(--rz-fieldset-min-width, 0);
+    min-width: 0;
     border: none;
   }
   legend {
-    --rz-legend-width: auto;
-    --rz-legend-max-width: none;
-    inline-size: var(--rz-legend-width, auto);
-    width: var(--rz-legend-width, auto);
-    max-inline-size: var(--rz-legend-max-width, none);
-    max-width: var(--rz-legend-max-width, none);
+    width: auto;
+    max-width: none;
     border: none;
     display: block;
     float: none;
@@ -226,11 +196,8 @@
     unicode-bidi: isolate;
   }
   hr {
-    --rz-hr-height: 1px;
-    --rz-hr-border: none;
-    height: var(--rz-hr-height);
-    block-size: var(--rz-hr-height);
-    border: var(--rz-hr-border, none);
+    height: 1px;
+    border: none;
     background: currentColor;
     opacity: 0.1;
   }
@@ -372,27 +339,18 @@
     }
   }
   dialog {
-    --rz-dialog-max-width: 90%;
-    --rz-dialog-max-height: 85dvh;
-    --rz-dialog-padding-x: 1rem;
-    --rz-dialog-padding-y: 1.25rem;
-    --rz-dialog-border: 1px solid hsl(0deg 0% 91.81%);
-    --rz-dialog-scrollbar-bg: transparent;
-    --rz-dialog-scrollbar-width: none;
-    max-width: var(--rz-dialog-max-width, 90%);
-    max-inline-size: var(--rz-dialog-max-width, 90%);
-    max-height: var(--rz-dialog-max-height, 85dvh);
-    max-block-size: var(--rz-dialog-max-height, 85dvh);
+    max-width: 90%;
+    max-height: 85dvh;
     margin: auto;
     padding: 0;
-    border: var(--rz-dialog-border, 1px solid hsl(0, 0%, 91.81%));
+    border: 1px solid hsl(0, 0%, 91.81%);
     -webkit-border-radius: 0.5rem;
             border-radius: 0.5rem;
     -ms-scroll-chaining: none;
         overscroll-behavior: contain;
     scroll-behavior: smooth;
-    scrollbar-width: var(--rz-dialog-scrollbar-width, none);
-    scrollbar-color: var(--rz-dialog-scrollbar-bg, transparent) var(--rz-dialog-scrollbar-bg, transparent);
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
     -webkit-animation: rz-bottom-to-top 0.25s ease-in-out forwards;
        -moz-animation: rz-bottom-to-top 0.25s ease-in-out forwards;
          -o-animation: rz-bottom-to-top 0.25s ease-in-out forwards;
@@ -400,20 +358,18 @@
   }
   @media only screen and (width > 767px) {
     dialog {
-      --rz-dialog-max-width: 45rem;
+      max-width: 45rem;
     }
   }
   dialog::-webkit-scrollbar {
-    --rz-dialog-scrollbar-width: 0;
-    width: var(--rz-dialog-scrollbar-width, 0);
-    inline-size: var(--rz-dialog-scrollbar-width, 0);
+    width: 0;
     display: none;
   }
   dialog::-webkit-scrollbar-track {
-    background-color: var(--rz-dialog-scrollbar-bg, transparent);
+    background-color: transparent;
   }
   dialog::-webkit-scrollbar-thumb {
-    background-color: var(--rz-dialog-scrollbar-bg, transparent);
+    background-color: transparent;
   }
   dialog::-webkit-backdrop {
     background-color: hsl(0, 0%, 0%);
@@ -489,12 +445,8 @@
   }
   /* This is for accessibility purposes */
   .sr-only {
-    --rz-sr-only-width: 1px;
-    --rz-sr-only-height: 1px;
-    inline-size: var(--rz-sr-only-width, 1px);
-    width: var(--rz-sr-only-width, 1px);
-    block-size: var(--rz-sr-only-height, 1px);
-    height: var(--rz-sr-only-height, 1px);
+    width: 1px;
+    height: 1px;
     border: 0;
     margin: -1px;
     padding: 0;
@@ -505,12 +457,8 @@
   }
   /* This is for accessibility purposes */
   .not-sr-only {
-    --rz-not-sr-only-width: auto;
-    --rz-not-sr-only-height: auto;
-    inline-size: var(--rz-not-sr-only-width, auto);
-    width: var(--rz-not-sr-only-width, auto);
-    block-size: var(--rz-not-sr-only-height, auto);
-    height: var(--rz-not-sr-only-height, auto);
+    width: auto;
+    height: auto;
     position: static;
     padding: 0;
     margin: 0;
