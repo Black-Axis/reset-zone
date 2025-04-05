@@ -90,37 +90,6 @@
       }
     }
 
-    // * Remove default margin.
-    // *
-    // * This is important for accessibility and to prevent that
-    // * users with small screens or users with assistive technologies
-    // * to zoom in and out to see the content.
-    // *
-    // * The following elements are reset to have a zero margin:
-    // *
-    // * `body` to prevent the content from being rendered
-    // * outside of the viewport.
-    // * `h1`, `h2`, `h3`, `h4` to prevent the headings from
-    // * having a default margin.
-    // * `p` to prevent the paragraphs from having a default margin.
-    // * `figure` to prevent the figures from having a default margin.
-    // * `blockquote` to prevent the blockquotes from having a default margin.
-    // * `dl` to prevent the definition lists from having a default margin.
-    // * `dd` to prevent the definition description from having a default margin.
-
-    body,
-    h1,
-    h2,
-    h3,
-    h4,
-    p,
-    figure,
-    blockquote,
-    dl,
-    dd {
-      margin: 0;
-    }
-
     // * Avoid text overflows.
     // * Allow text to break at arbitrary points to avoid overflowing the container
     // *
