@@ -338,10 +338,6 @@ audio :not([controls]) {
   opacity: 0.5;
 }
 
-:empty {
-  display: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
