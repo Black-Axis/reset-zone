@@ -1,0 +1,40 @@
+@charset "UTF-8";
+@use "./src/mixins/reset-zone-styles" as Core;
+
+// @summary
+// * The current file contains two mixins that can be used to reset all
+// * basic HTML elements to their default styles, which are defined by the
+// * W3C specification. The first mixin is `rz()` and the second mixin is
+// * `rz-layer()`. The `rz()` mixin is used to simply reset the HTML elements
+// * without any CSS layers. The `rz-layer()` mixin is used to reset the HTML
+// * elements and add a CSS layer to the elements. The layer is specified by the
+// * first argument of the mixin. The layer is used to allow users to override
+// * the default values of the CSS variables.
+// *
+// * You can also use the compiled files in `dist` directory as it is the
+// * recommended way to use the package. The compiled files contain vendor
+// * prefixes of all CSS properties which is very important in production.
+// * You can read file `README.md` to know how to use the package.
+
+// @version 3.0.0
+
+// @access public
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+// @param {String} $layer-name - The name of the layer.
+// @default reset-zone
+
+@mixin rz-layer($layer-name: reset-zone) {
+  @layer #{$layer-name} {
+    @include Core.reset-zone;
+  }
+}
+
+@mixin rz() {
+  @include Core.reset-zone;
+}
