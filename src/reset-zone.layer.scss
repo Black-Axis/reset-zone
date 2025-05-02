@@ -1,17 +1,12 @@
 @charset "UTF-8";
-@use "./mixins/reset-zone-styles" as Core;
+@use "../index" as Core;
 
-// @description
-// * A mixin that resets all basic HTML elements to their default
-// * styles, which are defined by the W3C specification. This is
-// * useful for ensuring that all browsers render the HTML elements
-// * correctly, and for removing any default browser styles that
-// * may interfere with other styles.
-// *
-// * You can also use the compiled files in `dist` directory as it is the
-// * recommended way to use the package. The compiled files contain vendor
-// * prefixes of all CSS properties which is very important in production.
-// * You can read file `README.md` to know how to use the package.
+// @summary
+// * The current file contains a `Core.rz-layer` mixin that will be used to
+// * compile a native SCSS to CSS output into dist directory with minified
+// * version.
+
+// @version 3.0.0
 
 // @access public
 
@@ -21,17 +16,7 @@
 
 // @repository: https://github.com/Black-Axis/reset-zone
 
-// @param {String} $layer-name - The name of the layer.
-// @default reset-zone
+// stylelint-disable at-rule-empty-line-before
 
-// @example 1
-// @include reset-zone-layer;
 
-// @example 2
-// @include reset-zone-layer('general-reset');
-
-@mixin reset-zone-layer($layer-name: reset-zone) {
-  @layer #{$layer-name} {
-    @include Core.reset-zone;
-  }
-}
+@include Core.rz-layer;
