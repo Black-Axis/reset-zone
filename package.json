@@ -1,6 +1,6 @@
 {
   "name": "reset-zone",
-  "version": "2.4.4",
+  "version": "3.0.0",
   "description": "A modern CSS reset for modern web applications!",
   "packageManager": "yarn@4.5.0",
   "markdown": "github",
@@ -28,6 +28,19 @@
     "CSS Reset",
     "reset-zone"
   ],
+  "files": [
+    "src/**/*.scss",
+    "dist/**/*.css",
+    "index.scss",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "exports": {
+    "sass": "./index.scss",
+    "import": "./index.scss"
+  },
+  "style": "./index.scss",
+  "sass": "./index.scss",
   "repository": {
     "url": "https://github.com/Black-Axis/reset-zone",
     "type": "git"
