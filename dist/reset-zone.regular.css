@@ -28,8 +28,7 @@ body {
 }
 :where(body) {
   overflow-wrap: break-word;
-  -webkit-hyphens: auto;
-          hyphens: auto;
+  hyphens: auto;
 }
 
 p,
@@ -389,7 +388,7 @@ dialog::backdrop {
   margin: -1px;
   padding: 0;
   position: absolute;
-  clip: rect(0, 0, 0, 0);
+  clip-path: rect(0, 0, 0, 0);
   overflow: hidden;
   white-space: nowrap;
 }
@@ -402,6 +401,6 @@ dialog::backdrop {
   padding: 0;
   margin: 0;
   overflow: visible;
-  clip: auto;
+  clip-path: auto;
   white-space: normal;
 }
