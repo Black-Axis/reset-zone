@@ -23,7 +23,8 @@
 @mixin reset-zone() {
     // * Box sizing rules.
     // * Apply a universal box-sizing rule to all elements, including
-    // * pseudo-elements. This resets margin and padding to prevent
+    // * pseudo-elements, backdrop pseudo-elements and file selector
+    // * button pseudo-elements. This resets margin and padding to prevent
     // * default browser styles from interfering, and ensures that the
     // * box-sizing property is set to border-box.
     // *
@@ -33,7 +34,9 @@
 
     *,
     *::before,
-    *::after {
+    *::after,
+    ::backdrop,
+    ::file-selector-button {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
