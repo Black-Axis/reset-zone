@@ -1,12 +1,12 @@
 @layer reset-zone {
   *,
   *::before,
-  *::after {
+  *::after,
+  ::backdrop,
+  ::file-selector-button {
     margin: 0;
     padding: 0;
-    -webkit-box-sizing: border-box;
-       -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    box-sizing: border-box;
   }
   @media (prefers-reduced-motion: no-preference) {
     html,
@@ -28,8 +28,6 @@
   :where(body) {
     overflow-wrap: break-word;
     -webkit-hyphens: auto;
-       -moz-hyphens: auto;
-        -ms-hyphens: auto;
             hyphens: auto;
   }
   p,
@@ -84,16 +82,12 @@
     bottom: -0.25em;
   }
   menu {
-    unicode-bidi: -webkit-isolate;
-    unicode-bidi: -moz-isolate;
     unicode-bidi: isolate;
   }
   a:not([class]) {
     -webkit-text-decoration-skip: ink;
             text-decoration-skip-ink: auto;
-    -webkit-text-decoration-line: underline;
-       -moz-text-decoration-line: underline;
-            text-decoration-line: underline;
+    text-decoration-line: underline;
     text-decoration-thickness: max(0.08em, 1px);
     text-underline-offset: 0.15em;
   }
@@ -105,10 +99,8 @@
     height: auto;
     font-style: italic;
     background-repeat: no-repeat;
-    -o-background-size: cover;
-       background-size: cover;
-    -webkit-shape-margin: 1rem;
-            shape-margin: 1rem;
+    background-size: cover;
+    shape-margin: 1rem;
   }
   img,
   picture,
@@ -126,8 +118,6 @@
   meter,
   progress {
     width: 100%;
-    max-width: -webkit-calc(100% - 1rem);
-    max-width: -moz-calc(100% - 1rem);
     max-width: calc(100% - 1rem);
     height: 1.25rem;
     margin-block: 0.5rem;
@@ -191,8 +181,6 @@
   }
   bdi,
   bdo {
-    unicode-bidi: -webkit-isolate;
-    unicode-bidi: -moz-isolate;
     unicode-bidi: isolate;
   }
   hr {
@@ -277,23 +265,7 @@
   :focus {
     scroll-padding-block-end: 8vh;
   }
-  ::-webkit-input-placeholder {
-    color: inherit;
-    opacity: 0.5;
-  }
-  :-moz-placeholder {
-    color: inherit;
-    opacity: 0.5;
-  }
   ::-moz-placeholder {
-    color: inherit;
-    opacity: 0.5;
-  }
-  :-ms-input-placeholder {
-    color: inherit;
-    opacity: 0.5;
-  }
-  ::-ms-input-placeholder {
     color: inherit;
     opacity: 0.5;
   }
@@ -305,34 +277,15 @@
     *,
     *::before,
     *::after {
-      -webkit-animation-duration: 0.01ms;
-         -moz-animation-duration: 0.01ms;
-           -o-animation-duration: 0.01ms;
-              animation-duration: 0.01ms;
-      -webkit-animation-delay: -1ms;
-         -moz-animation-delay: -1ms;
-           -o-animation-delay: -1ms;
-              animation-delay: -1ms;
-      -webkit-animation-iteration-count: 1;
-         -moz-animation-iteration-count: 1;
-           -o-animation-iteration-count: 1;
-              animation-iteration-count: 1;
-      -webkit-transition-duration: 0s;
-         -moz-transition-duration: 0s;
-           -o-transition-duration: 0s;
-              transition-duration: 0s;
-      -webkit-transition-delay: 0s;
-         -moz-transition-delay: 0s;
-           -o-transition-delay: 0s;
-              transition-delay: 0s;
+      animation-duration: 0.01ms;
+      animation-delay: -1ms;
+      animation-iteration-count: 1;
+      transition-duration: 0s;
+      transition-delay: 0s;
       scroll-behavior: auto;
       background-attachment: initial;
-      -webkit-perspective: none;
-         -moz-perspective: none;
-              perspective: none;
-      -webkit-transform-style: flat;
-         -moz-transform-style: flat;
-              transform-style: flat;
+      perspective: none;
+      transform-style: flat;
     }
   }
   dialog {
@@ -341,17 +294,12 @@
     margin: auto;
     padding: 0;
     border: 1px solid hsl(0, 0%, 91.81%);
-    -webkit-border-radius: 0.5rem;
-            border-radius: 0.5rem;
-    -ms-scroll-chaining: none;
-        overscroll-behavior: contain;
+    border-radius: 0.5rem;
+    overscroll-behavior: contain;
     scroll-behavior: smooth;
     scrollbar-width: none;
     scrollbar-color: transparent transparent;
-    -webkit-animation: rz-bottom-to-top 0.25s ease-in-out forwards;
-       -moz-animation: rz-bottom-to-top 0.25s ease-in-out forwards;
-         -o-animation: rz-bottom-to-top 0.25s ease-in-out forwards;
-            animation: rz-bottom-to-top 0.25s ease-in-out forwards;
+    animation: rz-bottom-to-top 0.25s ease-in-out forwards;
   }
   @media only screen and (width > 767px) {
     dialog {
@@ -368,68 +316,18 @@
   dialog::-webkit-scrollbar-thumb {
     background-color: transparent;
   }
-  dialog::-webkit-backdrop {
-    background-color: hsl(0, 0%, 0%);
-    opacity: 0.5;
-  }
-  dialog::-ms-backdrop {
-    background-color: hsl(0, 0%, 0%);
-    opacity: 0.5;
-  }
   dialog::backdrop {
     background-color: hsl(0, 0%, 0%);
     opacity: 0.5;
   }
-  @-webkit-keyframes rz-bottom-to-top {
-    0% {
-      opacity: 0;
-      -webkit-transform: translateY(10%);
-              transform: translateY(10%);
-    }
-    100% {
-      opacity: 1;
-      -webkit-transform: translateY(0);
-              transform: translateY(0);
-    }
-  }
-  @-moz-keyframes rz-bottom-to-top {
-    0% {
-      opacity: 0;
-      -moz-transform: translateY(10%);
-           transform: translateY(10%);
-    }
-    100% {
-      opacity: 1;
-      -moz-transform: translateY(0);
-           transform: translateY(0);
-    }
-  }
-  @-o-keyframes rz-bottom-to-top {
-    0% {
-      opacity: 0;
-      -o-transform: translateY(10%);
-         transform: translateY(10%);
-    }
-    100% {
-      opacity: 1;
-      -o-transform: translateY(0);
-         transform: translateY(0);
-    }
-  }
   @keyframes rz-bottom-to-top {
     0% {
       opacity: 0;
-      -webkit-transform: translateY(10%);
-         -moz-transform: translateY(10%);
-           -o-transform: translateY(10%);
-              transform: translateY(10%);
+      transform: translateY(10%);
     }
     100% {
       opacity: 1;
-      -webkit-transform: translateY(0);
-         -moz-transform: translateY(0);
-           -o-transform: translateY(0);
-              transform: translateY(0);
+      transform: translateY(0);
     }
   }
   @media print {
