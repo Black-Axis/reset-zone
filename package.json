@@ -1,6 +1,6 @@
 {
   "name": "reset-zone",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A modern CSS reset for modern web applications!",
   "packageManager": "yarn@4.5.0",
   "markdown": "github",
