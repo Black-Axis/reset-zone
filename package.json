@@ -54,6 +54,7 @@
     "min:layer:css": "nodemon --watch ./dist/reset-zone.layer.css --exec 'yarn postcss ./dist/reset-zone.layer.css -o ./dist/reset-zone.layer.min.css'",
     "lint": "yarn stylelint \"./src/**/*.scss\" --fix",
     "upgrade": "ncu --upgrade",
+    "check-updates": "ncu",
     "cmt": "cz",
     "tags:github": "git push repo --tags",
     "tags:gitlab": "git push gitlab --tags"
