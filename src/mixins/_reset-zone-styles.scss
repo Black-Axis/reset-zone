@@ -114,6 +114,23 @@
       overflow-wrap: break-word;
     }
 
+    // * Set the `text-wrap` property to `balance` for all headings.
+    // * The `text-wrap` property is used to specify whether the text should
+    // * be wrapped or not. The `balance` value is used to balance
+    // * the text wrapping between the lines of the heading element.
+    // * This is important for accessibility and to prevent that
+    // * users with small screens or users with assistive technologies
+    // * to zoom in and out to see the content.
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-wrap: balance;
+    }
+
     // * Remove list styles on ul, ol elements with a list role which suggests
     // * default styling will be removed. This is important for accessibility and
     // * to prevent that users with small screens or users with assistive
