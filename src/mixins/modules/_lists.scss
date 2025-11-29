@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains a `lists` mixin that will be used to
+// * reset list-related elements like ul, ol, and menu.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin lists {
+    // * Remove list styles on ul, ol elements with a list role which suggests
+    // * default styling will be removed. This is important for accessibility and
+    // * to prevent that users with small screens or users with assistive
+    // * technologies to zoom in and out to see the content.
+    // *
+    // * The following elements are reset to have the `list-style` property
+    // * set to `none`:
+    // *
+    // * `ul[role="list"]` to remove default list styling.
+    // * `menu[role="list"]` to remove default list styling.
+    // * `ol[role="list"]` to remove default list styling.
+
+    ul[role="list"],
+    menu[role="list"],
+    ol[role="list"] {
+      list-style: none;
+    }
+}

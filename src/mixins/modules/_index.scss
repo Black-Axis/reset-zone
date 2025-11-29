@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+// stylelint-disable-next-line at-rule-empty-line-before
+@use "box-sizing" as *;
+@use "root" as *;
+@use "typography" as *;
+@use "layout" as *;
+@use "media" as *;
+@use "lists" as *;
+@use "forms" as *;
+@use "tables" as *;
+@use "accessibility" as *;
+@use "dialog" as *;
+@use "print" as *;
+
+// @description
+// * A mixin that resets all basic HTML elements to their default
+// * styles, which are defined by the W3C specification. This is
+// * useful for ensuring that all browsers render the HTML elements
+// * correctly, and for removing any default browser styles that
+// * may interfere with other styles.
+// *
+// * You can also use the compiled files in `dist` directory as it is the
+// * recommended way to use the package. The compiled files contain vendor
+// * prefixes of all CSS properties which is very important in production.
+// * You can read file `README.md` to know how to use the package.
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin reset-zone() {
+    @include box-sizing;
+    @include root;
+    @include typography;
+    @include layout;
+    @include media;
+    @include lists;
+    @include forms;
+    @include tables;
+    @include dialog;
+    @include print;
+    @include accessibility;
+}

@@ -1,0 +1,44 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains a `print` mixin that will be used to
+// * apply styles for printing.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin print {
+    // * Print styles
+    // *
+    // * These styles are applied when the user prints the page.
+    // * They are used to customize the printed page.
+    // *
+    // * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/@page}
+
+    @media print {
+      // * Set the margin of the page.
+      // *
+      // * The value of `1.875rem` is used to align the content with the
+      // * default margin of the page.
+
+      @page {
+        margin: 1.875rem; // 30px
+      }
+
+      // * Show the URL of the link.
+      // *
+      // * This is useful for users who want to know the URL of the link
+      // * when they print the page.
+
+      a[href^="http"]::after {
+        content: " (" attr(href) ")";
+      }
+    }
+}

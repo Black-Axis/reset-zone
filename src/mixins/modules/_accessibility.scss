@@ -1,0 +1,327 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains an `accessibility` mixin that will be used to
+// * apply accessibility-related styles and helpers.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin accessibility {
+    // * The following code enables the hiding of elements with the
+    // * hidden attribute, but only when the browser does not support
+    // * the :where pseudo-class.
+    // *
+    // * The :where pseudo-class is supported in modern browsers and
+    // * this code is only needed for older browsers.
+    // *
+    // * The :where pseudo-class is more efficient than the [hidden]
+    // * attribute selector as it does not create a style rule.
+    // *
+    // * The :where pseudo-class will be used by browsers that support
+    // * it, and the [hidden] attribute selector will be used by
+    // * browsers that do not support the :where pseudo-class.
+    // *
+    // * For more information on the :where pseudo-class, see the
+    // * following resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:where
+
+    @supports selector(:where) {
+      :where([hidden]) {
+        display: none;
+      }
+    }
+
+    // * Hide elements with the hidden attribute for browsers not supporting
+    // * the :where pseudo-class. This ensures that elements with the hidden
+    // * attribute do not appear on the page in older browsers. The :where
+    // * pseudo-class is preferred in modern browsers for efficiency.
+    // *
+    // * For more information, see:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:where
+
+    @supports not selector(:where) {
+      [hidden] {
+        display: none;
+      }
+    }
+
+    // * Change the cursor to a progress indicator when the aria-busy state is
+    // * set to true.
+    // *
+    // * The aria-busy state is used to indicate that an element is currently
+    // * performing an action such as loading or processing data. When the
+    // * aria-busy state is set to true, the element should be inaccessible to
+    // * the user until the action is complete.
+    // *
+    // * This rule is used to provide a visual indication to the user that an
+    // * action is currently in progress and that the element should not be
+    // * interacted with until the action is complete.
+    // *
+    // * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-busy
+
+    [aria-busy="true"] {
+      cursor: progress;
+    }
+
+    // * Change the cursor to a pointing hand when the aria-controls attribute is
+    // * set on an element.
+    // *
+    // * The aria-controls attribute is used to indicate that an element controls
+    // * the content of another element. When this attribute is set, the element
+    // * should be clickable and should visually indicate to the user that
+    // * clicking on it will control the content of the other element.
+    // *
+    // * This rule is used to provide a visual indication to the user that the
+    // * element can be clicked to control the content of the other element.
+    // *
+    // * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls
+
+    [aria-controls] {
+      cursor: pointer;
+    }
+
+    // * Change the cursor to the default cursor when the aria-disabled attribute is
+    // * set on an element.
+    // *
+    // * The aria-disabled attribute is used to indicate that an element is currently
+    // * disabled. When this attribute is set, the element should be inaccessible to
+    // * the user until it is re-enabled.
+    // *
+    // * This rule is used to provide a visual indication to the user that the
+    // * element is currently disabled and that it cannot be interacted with.
+    // *
+    // * For more information on the aria-disabled attribute, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled
+
+    [aria-disabled] {
+      cursor: default;
+    }
+
+    // * The focus-visible pseudo-class is supported in modern browsers.
+    // * It is used to indicate if the browser is currently allowing the
+    // * user to focus on the element.
+    // *
+    // * When the focus-visible pseudo-class is supported, a focus ring
+    // * is only rendered if the browser is currently allowing the user
+    // * to focus on the element.
+    // *
+    // * For more information on the focus-visible pseudo-class, see the
+    // * following resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
+
+    @supports selector(:focus-visible) {
+      :focus-visible {
+        // * The outline property is used to render a focus ring around the
+        // * element when it is focused. The value of max(1px, 0.15em) is used
+        // * to ensure that the focus ring is at least 1px in width and
+        // * scales with the element's font size.
+        // stylelint-disable-next-line value-keyword-case
+        outline: max(1px, 0.15em) solid currentColor;
+
+        // * The outline-offset property is used to set the distance between
+        // * the outline and the element. The value of max(1px, 0.15em) is used
+        // * to ensure that the outline is at least 1px away from the element
+        // * and scales with the element's font size.
+        outline-offset: max(1px, 0.15em);
+      }
+    }
+
+    // * The following block provides fallback styles for browsers that do not
+    // * support the :focus-visible pseudo-class. The :focus-visible pseudo-class
+    // * is used to indicate if the browser is currently allowing the user to
+    // * focus on an element. When it is not supported, the :focus selector is
+    // * used as a fallback to ensure accessibility and usability for keyboard
+    // * users. This ensures a focus ring is displayed for all focusable elements.
+    // *
+    // * For more information, see:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
+
+    @supports not selector(:focus-visible) {
+      :focus {
+        // * The outline property renders a focus ring around the element when
+        // * it is focused. The value "max(1px, 0.15em)" ensures the focus ring
+        // * is at least 1px wide and scales with the element's font size.
+        // stylelint-disable-next-line value-keyword-case
+        outline: max(1px, 0.15em) solid currentColor;
+
+        // * The outline-offset property sets the distance between the outline
+        // * and the element. It also uses "max(1px, 0.15em)" to maintain
+        // * consistent spacing, ensuring the outline is visible without
+        // * intruding on the element's content.
+        outline-offset: max(1px, 0.15em);
+      }
+    }
+
+    // * Scroll margin allowance above anchor links
+    // * Anchor links (e.g., <a href="#anchor">Link</a>) and named anchors
+    // * (e.g., <a name="anchor">Link</a>) get a scroll margin allowance above
+    // * to ensure they are clearly in view. The value of 2rem is used to
+    // * balance the importance of the content with the importance of the
+    // * anchor link. The scroll-padding-block-start property is used to
+    // * target the block-start of the element, which is the top of the
+    // * element in a horizontal writing mode.
+    // * This rule is essential for usability and accessibility, as it
+    // * ensures that the content is not obscured by the browser's location
+    // * bar or other elements.
+    // * The :target pseudo-class is used to target elements that have an
+    // * anchor link pointing to them. For example, the following HTML will
+    // * apply the styles when the link is clicked:
+    // * <a href="#section">Link</a>
+    // * <section id="section">Content</section>
+
+    :target {
+      scroll-padding-block-start: 2rem;
+    }
+
+    // * Scroll margin allowance below focused elements to ensure they
+    // * are clearly in view
+    // *
+    // * When an element is focused, such as when a user clicks on a link or
+    // * uses their keyboard to navigate to an element, a scroll margin
+    // * allowance is applied below the element to ensure it is clearly
+    // * visible. The value of 8vh is used to balance the importance of the
+    // * content with the importance of the focused element. The
+    // * scroll-padding-block-end property is used to target the block-end
+    // * of the element, which is the bottom of the element in a horizontal
+    // * writing mode.
+    // *
+    // * This rule is essential for usability and accessibility, as it
+    // * ensures that the content is not obscured by the browser's location
+    // * bar or other elements.
+    // *
+    // * For example, the following HTML will apply the styles when the link is
+    // * clicked:
+    // * <a href="#section">Link</a>
+    // * <section id="section">Content</section>
+
+    :focus {
+      // * The scroll-padding-block-end property is used to set the scroll margin
+      // * allowance below the element when it is focused. The value of 8vh is used
+      // * to balance the importance of the content with the importance of the
+      // * focused element.
+      scroll-padding-block-end: 8vh;
+    }
+
+    // * Remove all animations, transitions and smooth scroll for
+    // * people that prefer not to see them. This is important for
+    // * accessibility and to prevent that users with small screens or
+    // * users with assistive technologies to zoom in and out to see the
+    // * content.
+    // *
+    // * The following properties are set to prevent that the browser
+    // * or the user agent to apply any animations, transitions or
+    // * smooth scroll:
+    // *
+    // * `animation-duration` is set to `0.01ms` to prevent that the
+    // * browser or the user agent to apply any animations.
+    // * `animation-iteration-count` is set to `1` to prevent that the
+    // * browser or the user agent to apply any animations.
+    // * `transition-duration` is set to `0.01ms` to prevent that the
+    // * browser or the user agent to apply any transitions.
+    // * `scroll-behavior` is set to `auto` to prevent that the browser or
+    // * the user agent to apply any smooth scroll.
+    // * `animation-delay` is set to `-1ms` to prevent that the browser or
+    // * the user agent to apply any animations.
+    // * `background-attachment` is set to `initial` to prevent that the
+    // * browser or the user agent to apply any background attachment.
+    // * `transition-delay` is set to `0s` to prevent that the browser or
+    // * the user agent to apply any transitions.
+    // * `perspective` is set to `none` to prevent that the browser or
+    // * the user agent to apply any 3D transforms.
+    // * `transform-style` is set to `flat` to prevent that the browser or
+    // * the user agent to apply any 3D transforms.
+    // *
+    // * The `prefers-reduced-motion` media query is used to detect if
+    // * the user prefers reduced motion. If the user prefers reduced
+    // * motion, the styles will be applied to all elements, including
+    // * pseudo-elements. If the user does not prefer reduced motion, the
+    // * styles will not be applied.
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms;
+        animation-delay: -1ms;
+        animation-iteration-count: 1;
+        transition-duration: 0s;
+        transition-delay: 0s;
+        scroll-behavior: auto;
+        background-attachment: initial;
+        perspective: none;
+        transform-style: flat;
+      }
+    }
+
+    /* This is for accessibility purposes */
+    // * This class is used to hide the content visually but keep it accessible
+    // * to screen readers.
+    // *
+    // * This class is useful for hiding the content that is not visible
+    // * but should be accessible to screen readers.
+    // *
+    // * It is also useful for hiding the content that is not visible
+    // * but should be accessible to assistive technologies.
+    // *
+    // * The class is used to hide the content visually but keep it accessible
+    // * to screen readers. It is also used to hide the content that is not visible
+    // * but should be accessible to assistive technologies.
+    // *
+    // * The content will be hidden visually but will be accessible to screen readers.
+    // * It will also be hidden from assistive technologies.
+    // *
+    // * The content will be read by screen readers and will be accessible to assistive
+    // * technologies.
+
+    .sr-only {
+      width: 1px;
+      height: 1px;
+      border: 0;
+      margin: -1px;
+      padding: 0;
+      position: absolute;
+      clip-path: rect(0, 0, 0, 0);
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    /* This is for accessibility purposes */
+    // * This class is used to show the content visually and make it accessible
+    // * to screen readers.
+    // *
+    // * This class is useful for showing the content that is not visible
+    // * but should be accessible to screen readers.
+    // *
+    // * It is also useful for showing the content that is not visible
+    // * but should be accessible to assistive technologies.
+    // *
+    // * The class is used to show the content visually and make it accessible
+    // * to screen readers. It is also used to show the content that is not visible
+    // * but should be accessible to assistive technologies.
+    // *
+    // * The content will be visible and will be accessible to screen readers.
+    // * It will also be visible to assistive technologies.
+    // *
+    // * The content will be read by screen readers and will be accessible to assistive
+    // * technologies.
+
+    .not-sr-only {
+      width: auto;
+      height: auto;
+      position: static;
+      padding: 0;
+      margin: 0;
+      overflow: visible;
+      clip-path: auto;
+      white-space: normal;
+    }
+}

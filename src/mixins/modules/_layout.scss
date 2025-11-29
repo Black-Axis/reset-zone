@@ -1,0 +1,145 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains a `layout` mixin that will be used to
+// * reset layout-related elements and apply container queries.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin layout {
+  // * The following code enables container queries for the following
+    // * elements:
+    // *
+    // * - The header element
+    // * - The footer element
+    // * - The main element
+    // * - The section element
+    // * - The article element
+    // *
+    // * The :is pseudo-class is used to group the selectors
+    // * to ensure that the container-type property is applied to
+    // * all the elements listed above.
+    // *
+    // * The container-type property is set to inline-size to
+    // * create a container query that styles the element's content
+    // * based on its own inline size.
+    // *
+    // * For more information on container queries, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
+    // * - https://css-tricks.com/css-container-queries/
+
+    @supports selector(:is) {
+      body> :is(header, footer),
+      main,
+      section,
+      article {
+        container-type: inline-size;
+      }
+    }
+
+    // * The following code enables container queries for the following
+    // * elements, but only when the browser does not support the
+    // * :is pseudo-class.
+    // *
+    // * - The header element
+    // * - The footer element
+    // * - The main element
+    // * - The section element
+    // * - The article element
+    // *
+    // * The container-type property is set to inline-size to
+    // * create a container query that styles the element's content
+    // * based on its own inline size.
+    // *
+    // * For more information on container queries, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Container_Queries
+    // * - https://css-tricks.com/css-container-queries/
+
+    @supports not selector(:is) {
+      body>header,
+      body>footer,
+      main,
+      section,
+      article {
+        container-type: inline-size;
+      }
+    }
+
+    // * Set the display property to block for all main HTML5 elements.
+    // *
+    // * The following elements are reset to have the `display` property
+    // * set to `block`:
+    // *
+    // * `main, header, footer, section, article, aside, nav, menu, details,
+    // * summary, object, embed, figcaption, figure, hgroup, img, picture, video,
+    // * canvas, svg`, meter, progress`.
+
+    main,
+    header,
+    footer,
+    section,
+    article,
+    aside,
+    nav,
+    menu,
+    details,
+    summary,
+    object,
+    embed,
+    figcaption,
+    figure,
+    hgroup,
+    img,
+    picture,
+    video,
+    canvas,
+    svg,
+    meter,
+    progress {
+      display: block;
+    }
+
+    // * Set default styles for menu tag
+    // *
+    // * - `unicode-bidi: isolate;` ensures that the text inside the menu
+    // *   element is isolated from text outside the element. This is important
+    // *   for preventing text directionality issues, especially in mixed
+    // *   language environments, ensuring that the text within behaves
+    // *   independently of surrounding text direction.
+
+    menu {
+      unicode-bidi: isolate;
+    }
+
+    // * Hide all children of the details element except for the summary
+    // * element if the open attribute is not set on the details element.
+    // *
+    // * The open attribute is used to control the visibility of the details
+    // * element. If the open attribute is set, the details element is visible,
+    // * and if it is not set, the details element is hidden.
+    // *
+    // * The `:not([open])` pseudo-class is used to select all details elements
+    // * that do not have the open attribute set.
+    // *
+    // * The `>*:not(summary)` selector is used to select all children of the
+    // * details element except for the summary element.
+    // *
+    // * The `display: none` property is used to hide the selected elements.
+    // *
+
+    details {
+      &:not([open])>*:not(summary) {
+          display: none;
+      }
+    }
+}

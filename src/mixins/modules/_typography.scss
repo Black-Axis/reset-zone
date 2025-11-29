@@ -1,0 +1,223 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains a `typography` mixin that will be used to
+// * reset typography-related elements like headings, paragraphs, and lists.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin typography {
+    // * Avoid text overflows.
+    // * Allow text to break at arbitrary points to avoid overflowing the container
+    // *
+    // * This is important for accessibility and to prevent that
+    // * users with small screens or users with assistive technologies
+    // * to zoom in and out to see the content.
+    // *
+    // * The following elements are reset to have the `overflow-wrap` property
+    // * set to `break-word`:
+    // *
+    // * `p` to prevent paragraphs from overflowing the container.
+    // * `h1`, `h2`, `h3`, `h4`, `h5`, `h6` to prevent headings from overflowing
+    // * the container.
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      overflow-wrap: break-word;
+    }
+
+    // * Set the `text-wrap` property to `balance` for all headings.
+    // * The `text-wrap` property is used to specify whether the text should
+    // * be wrapped or not. The `balance` value is used to balance
+    // * the text wrapping between the lines of the heading element.
+    // * This is important for accessibility and to prevent that
+    // * users with small screens or users with assistive technologies
+    // * to zoom in and out to see the content.
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      text-wrap: balance;
+    }
+
+    // * Set default styles for sub and sup HTML elements.
+    // * - `position: relative;` is used to position the element relative to its
+    // *   normal position.
+    // * - `font-size: 75%;` sets the font size for the element to 75% of the
+    // *   normal font size.
+    // * - `line-height: 0;` sets the line height to 0 so that the element does
+    // *   not take up any vertical space.
+    // * - `vertical-align: baseline;` sets the vertical alignment of the element
+    // *   to the baseline of the parent element.
+
+    sup,
+    sub {
+      position: relative;
+      font-size: 75%;
+      line-height: 0;
+      vertical-align: baseline;
+    }
+
+    // * Superscript elements
+    // * - `top: -0.5em;` will move the element up by half the height of the
+    // *   parent element's line height so that it is positioned above the
+    // *   normal text flow.
+
+    sup {
+      top: -0.5em;
+    }
+
+    // * Subscript elements
+    // * - `bottom: -0.25em;` will move the element down by a quarter of the
+    // *   height of the parent element's line height so that it is positioned
+    // *   below the normal text flow.
+
+    sub {
+      bottom: -0.25em;
+    }
+
+    // * A elements that don't have a class get default styles
+    // * Default styles for anchor elements without a class attribute.
+    // *
+    // * This ensures that links without a class have a consistent visual
+    // * appearance across different browsers. The styles applied include:
+    // *
+    // * - `text-decoration-skip-ink: auto;` allows the underline to skip over
+    // *   descenders, making the text more readable.
+    // * - `text-decoration-line: underline;` explicitly sets the text
+    // *   decoration to an underline.
+    // * - `text-decoration-thickness: max(0.08em, 1px);` sets the thickness
+    // *   of the underline to the maximum of 0.08em or 1px, ensuring
+    // *   visibility.
+    // * - `text-underline-offset: 0.15em;` offsets the underline from the
+    // *   text by 0.15em, improving readability.
+
+    a:not([class]) {
+      text-decoration-skip-ink: auto;
+      text-decoration-line: underline;
+      text-decoration-thickness: max(0.08em, 1px);
+      text-underline-offset: 0.15em;
+    }
+
+    // * Set default styles for figcaption
+    // *
+    // * - `font-style: italic;` is set to make the text within the figcaption
+    // *   element italic. This is a common visual cue for captions.
+
+    figcaption {
+      font-style: italic;
+    }
+
+    // * Reset styles of blockquote and q tag
+    // * Remove the default quotation marks on blockquote and q tags
+    // *
+    // * Quotation marks are often used to indicate quotations in writing.
+    // * However, in HTML, the blockquote and q tags are used to indicate
+    // * quotations as well. Therefore, it is not necessary to add
+    // * quotation marks inside these tags.
+    // *
+    // * The following code removes the default quotation marks on blockquote
+    // * and q tags.
+    // *
+    // * :before and :after pseudo elements are used to add quotation marks
+    // * before and after the content of the blockquote and q tags.
+    // *
+    // * The content property is used to remove the default quotation marks
+    // * on the blockquote and q tags.
+    // *
+    // * The quotes property is set to none to remove the default quotation
+    // * marks on the blockquote and q tags.
+    // * For more information, see the MDN documentation on the quotes property:
+    // * https://developer.mozilla.org/en-US/docs/Web/CSS/quotes
+
+    blockquote,
+    q {
+      quotes: none;
+
+      &::before,
+      &::after {
+        content: none;
+      }
+    }
+
+    // * Reset styles for hr elements
+    // *
+    // * The hr element is a semantic element that represents a thematic break
+    // * between paragraphs of text. It is often displayed as a horizontal line.
+    // *
+    // * The default styles for the hr element are removed, and the following
+    // * styles are applied:
+    // *
+    // *   - `height` is set to `1px` to create a thin line.
+    // *   - `border` is set to `none` to remove any borders.
+    // *   - `background` is set to `currentColor` to set the background color
+    // *     of the horizontal line to the current color of the element.
+    // *   - `opacity` is set to `0.1` to make the horizontal line slightly
+    // *     transparent.
+    // *
+    // * These styles are applied to ensure that the hr element is displayed
+    // * consistently across different browsers.
+
+    hr {
+      height: 1px;
+      border: none;
+
+      // stylelint-disable-next-line value-keyword-case
+      background: currentColor;
+      opacity: 0.1;
+    }
+
+    // * Reset for preformatted text and code elements
+    // *
+    // * Remove default monospace fonts and ensure consistent
+    // * presentation of code blocks while maintaining readability
+
+    pre,
+    code,
+    kbd,
+    samp {
+      --rz-code-font: courier, monospace;
+
+      font-family: var(--rz-code-font, inherit);
+      font-size: inherit;
+      white-space: pre-wrap;
+      tab-size: 2;
+    }
+
+    // * Hide the second consecutive line break
+    // *
+    // * When there are two or more consecutive line breaks, the first one
+    // * is rendered as a line break, and the second one is rendered as an
+    // * empty block element. This is a default behavior in HTML. By hiding
+    // * the second line break, we can prevent this empty block element from
+    // * being rendered.
+    // *
+    // * This is useful for rendering Markdown code blocks and other types of
+    // * content that use line breaks to separate sections.
+    // *
+    // * The selector `br + br` selects the second line break element that
+    // * follows the first line break element. The `display: none;` property
+    // * is used to hide the second line break element.
+    // *
+    // * This is useful for CMS users.
+
+    br + br {
+      display: none;
+    }
+}

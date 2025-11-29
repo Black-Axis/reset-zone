@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@use "./src/mixins/reset-zone-styles" as Core;
+@use "src/mixins/modules/index" as Core;
 
 // @summary
 // * The current file contains two mixins that can be used to reset all
@@ -16,7 +16,7 @@
 // * prefixes of all CSS properties which is very important in production.
 // * You can read file `README.md` to know how to use the package.
 
-// @version 3.0.0
+// @version 3.2.0
 
 // @access public
 
@@ -30,6 +30,7 @@
 // @default reset-zone
 
 @mixin rz-layer($layer-name: reset-zone) {
+  // stylelint-disable-next-line layer-name-pattern
   @layer #{$layer-name} {
     @include Core.reset-zone;
   }
