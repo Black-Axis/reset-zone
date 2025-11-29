@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains a `forms` mixin that will be used to
+// * reset form elements like inputs, buttons, and fieldset.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin forms {
+    // * Default styles for `meter` and `progress` elements.
+    // *
+    // * The following CSS properties are applied to ensure consistent styling
+    // * across different browsers for the meter and progress elements:
+    // *
+    // * - `--rz-measure-width: 100%;` sets the default width to full width.
+    // * - `--rz-measure-max-width: calc(100% - 1rem);` ensures there is padding
+    // *   around the element, making it responsive and preventing overflow.
+    // * - `--rz-measure-height: 1.25rem;` sets a consistent height for both elements.
+    // *
+    // * These variables are used to define the element's width and height,
+    // * providing flexibility and ease of customization.
+    // *
+    // * Additional styles:
+    // * - `margin-block: 0.5rem;` adds vertical spacing around the elements.
+    // * - `padding-inline: 0.5rem;` ensures there is padding within the element.
+    // *
+    // * The styles for the pseudo-elements for webkit and moz browsers ensure
+    // * a consistent appearance for the progress bar.
+    // * - `background-color: transparent;` sets the progress bar track to be
+    // *   transparent.
+    // * - `background-color: currentColor;` sets the progress fill color to match
+    // *   the current font color.
+
+    meter,
+    progress {
+        width: 100%;
+        max-width: calc(100% - 1rem);
+        height: 1.25rem;
+        margin-block: 0.5rem;
+        padding-inline: 0.5rem;
+
+        &::-webkit-progress-bar {
+            background-color: transparent;
+        }
+
+        &::-webkit-progress-value {
+            // stylelint-disable-next-line value-keyword-case
+            background-color: currentColor;
+        }
+
+        &::-moz-progress-bar {
+            // stylelint-disable-next-line value-keyword-case
+            background-color: currentColor;
+        }
+    }
+
+    // * Set default styles for the fieldset element.
+    // *
+    // * - The `--rz-fieldset-min-width` variable are defined to allow easy
+    // *   customization of the fieldset's minimum width.
+    // * - `min-width` are set to ensure that the fieldset
+    // *   does not shrink below the specified minimum width.
+    // * - `border: none;` removes the default border around the fieldset,
+    // *   providing a clean, unstyled appearance. This is important for creating
+    // *   consistent styling across different browsers and user agents.
+
+    fieldset {
+      min-width: 0;
+      border: none;
+    }
+
+    // * Set default styles for the `legend` element.
+    // *
+    // * - `--rz-legend-width` and `--rz-legend-max-width` are defined to allow
+    // *   easy customization of the legend's width and maximum width.
+    // * - `width` are set to ensure that the legend does not
+    // *   shrink below the specified width.
+    // * - `max-width` are set to ensure that the legend
+    // *   does not grow beyond the specified maximum width.
+    // * - `border: none;` removes the default border around the legend,
+    // *   providing a clean, unstyled appearance. This is important for creating
+    // *   consistent styling across different browsers and user agents.
+    // * - `display: block;` sets the legend to be a block element, which
+    // *   is important for accessibility purposes, as it allows screen readers
+    // *   to properly interpret the legend.
+    // * - `float: none;` is set to prevent the legend from being floated,
+    // *   which can cause accessibility issues in some browsers.
+    // * - `font: inherit;` ensures that the legend inherits the font styles
+    // *   from its parent element.
+    // * - `text-align: start;` sets the text alignment of the legend to be
+    // *   start-aligned.
+    // * - `color: inherit;` ensures that the legend inherits the text color
+    // *   from its parent element.
+    // * - `background: none;` removes the default background color of the
+    // *   legend, providing a clean, unstyled appearance.
+
+    legend {
+      width: auto;
+      max-width: none;
+      border: none;
+      display: block;
+      float: none;
+      font: inherit;
+      text-align: start;
+      color: inherit;
+      background: none;
+    }
+
+    // * Inherit fonts for inputs and buttons
+    // *
+    // * This is a common accessibility problem in web development. If
+    // * the font styles are not inherited, the input fields and buttons
+    // * will not have the same font as the rest of the content.
+
+    input,
+    button,
+    textarea,
+    select,
+    option,
+    mark,
+    small,
+    dfn,
+    abbr,
+    cite,
+    time,
+    data {
+      font: inherit;
+    }
+
+    // * Set the color and opacity of placeholder text.
+    // *
+    // * This is important for accessibility and usability, as it ensures that
+    // * the placeholder text is visible and readable. The value of 0.5 is used
+    // * to balance the importance of the placeholder text with the importance
+    // * of the content.
+    // *
+    // * The `::placeholder` pseudo-element is used to target the placeholder
+    // * text of form elements. For example, the following HTML will apply the
+    // * styles:
+    // * <input type="text" placeholder="Search">
+    // *
+    // * The `color` property is used to set the color of the placeholder text.
+    // * The value of `inherit` is used to inherit the color of the parent
+    // * element, which is the most common case.
+    // *
+    // * The `opacity` property is used to set the opacity of the placeholder
+    // * text. The value of `0.5` is used to balance the importance of the
+    // * placeholder text with the importance of the content.
+
+    ::placeholder {
+      color: inherit;
+      opacity: 0.5;
+    }
+}

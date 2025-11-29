@@ -46,10 +46,75 @@
   h6 {
     text-wrap: balance;
   }
-  ul[role=list],
-  menu[role=list],
-  ol[role=list] {
-    list-style: none;
+  sup,
+  sub {
+    position: relative;
+    font-size: 75%;
+    line-height: 0;
+    vertical-align: baseline;
+  }
+  sup {
+    top: -0.5em;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  a:not([class]) {
+    -webkit-text-decoration-skip: ink;
+            text-decoration-skip-ink: auto;
+    text-decoration-line: underline;
+    text-decoration-thickness: max(0.08em, 1px);
+    text-underline-offset: 0.15em;
+  }
+  figcaption {
+    font-style: italic;
+  }
+  blockquote,
+  q {
+    quotes: none;
+  }
+  blockquote::before, blockquote::after,
+  q::before,
+  q::after {
+    content: none;
+  }
+  hr {
+    height: 1px;
+    border: none;
+    background: currentColor;
+    opacity: 0.1;
+  }
+  pre,
+  code,
+  kbd,
+  samp {
+    --rz-code-font: courier, monospace;
+    font-family: var(--rz-code-font, inherit);
+    font-size: inherit;
+    white-space: pre-wrap;
+    -moz-tab-size: 2;
+      -o-tab-size: 2;
+         tab-size: 2;
+  }
+  br + br {
+    display: none;
+  }
+  @supports selector(:is) {
+    body > :is(header, footer),
+    main,
+    section,
+    article {
+      container-type: inline-size;
+    }
+  }
+  @supports not selector(:is) {
+    body > header,
+    body > footer,
+    main,
+    section,
+    article {
+      container-type: inline-size;
+    }
   }
   main,
   header,
@@ -75,28 +140,11 @@
   progress {
     display: block;
   }
-  sup,
-  sub {
-    position: relative;
-    font-size: 75%;
-    line-height: 0;
-    vertical-align: baseline;
-  }
-  sup {
-    top: -0.5em;
-  }
-  sub {
-    bottom: -0.25em;
-  }
   menu {
     unicode-bidi: isolate;
   }
-  a:not([class]) {
-    -webkit-text-decoration-skip: ink;
-            text-decoration-skip-ink: auto;
-    text-decoration-line: underline;
-    text-decoration-thickness: max(0.08em, 1px);
-    text-underline-offset: 0.15em;
+  details:not([open]) > *:not(summary) {
+    display: none;
   }
   img,
   picture,
@@ -122,6 +170,14 @@
   embed {
     border: none;
   }
+  audio :not([controls]) {
+    display: none;
+  }
+  ul[role=list],
+  menu[role=list],
+  ol[role=list] {
+    list-style: none;
+  }
   meter,
   progress {
     width: 100%;
@@ -141,9 +197,6 @@
   meter::-moz-progress-bar,
   progress::-moz-progress-bar {
     background-color: currentColor;
-  }
-  figcaption {
-    font-style: italic;
   }
   fieldset {
     min-width: 0;
@@ -174,104 +227,6 @@
   data {
     font: inherit;
   }
-  blockquote,
-  q {
-    quotes: none;
-  }
-  blockquote::before, blockquote::after,
-  q::before,
-  q::after {
-    content: none;
-  }
-  details:not([open]) > *:not(summary) {
-    display: none;
-  }
-  bdi,
-  bdo {
-    unicode-bidi: isolate;
-  }
-  hr {
-    height: 1px;
-    border: none;
-    background: currentColor;
-    opacity: 0.1;
-  }
-  pre,
-  code,
-  kbd,
-  samp {
-    --rz-code-font: courier, monospace;
-    font-family: var(--rz-code-font, inherit);
-    font-size: inherit;
-    white-space: pre-wrap;
-    -moz-tab-size: 2;
-      -o-tab-size: 2;
-         tab-size: 2;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-  br + br {
-    display: none;
-  }
-  @supports selector(:is) {
-    body > :is(header, footer),
-    main,
-    section,
-    article {
-      container-type: inline-size;
-    }
-  }
-  @supports not selector(:is) {
-    body > header,
-    body > footer,
-    main,
-    section,
-    article {
-      container-type: inline-size;
-    }
-  }
-  @supports selector(:where) {
-    :where([hidden]) {
-      display: none;
-    }
-  }
-  @supports not selector(:where) {
-    [hidden] {
-      display: none;
-    }
-  }
-  audio :not([controls]) {
-    display: none;
-  }
-  [aria-busy=true] {
-    cursor: progress;
-  }
-  [aria-controls] {
-    cursor: pointer;
-  }
-  [aria-disabled] {
-    cursor: default;
-  }
-  @supports selector(:focus-visible) {
-    :focus-visible {
-      outline: max(1px, 0.15em) solid currentColor;
-      outline-offset: max(1px, 0.15em);
-    }
-  }
-  @supports not selector(:focus-visible) {
-    :focus {
-      outline: max(1px, 0.15em) solid currentColor;
-      outline-offset: max(1px, 0.15em);
-    }
-  }
-  :target {
-    scroll-padding-block-start: 2rem;
-  }
-  :focus {
-    scroll-padding-block-end: 8vh;
-  }
   ::-moz-placeholder {
     color: inherit;
     opacity: 0.5;
@@ -280,20 +235,9 @@
     color: inherit;
     opacity: 0.5;
   }
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms;
-      animation-delay: -1ms;
-      animation-iteration-count: 1;
-      transition-duration: 0s;
-      transition-delay: 0s;
-      scroll-behavior: auto;
-      background-attachment: initial;
-      perspective: none;
-      transform-style: flat;
-    }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
   }
   dialog {
     max-width: 90%;
@@ -343,6 +287,58 @@
     }
     a[href^=http]::after {
       content: " (" attr(href) ")";
+    }
+  }
+  @supports selector(:where) {
+    :where([hidden]) {
+      display: none;
+    }
+  }
+  @supports not selector(:where) {
+    [hidden] {
+      display: none;
+    }
+  }
+  [aria-busy=true] {
+    cursor: progress;
+  }
+  [aria-controls] {
+    cursor: pointer;
+  }
+  [aria-disabled] {
+    cursor: default;
+  }
+  @supports selector(:focus-visible) {
+    :focus-visible {
+      outline: max(1px, 0.15em) solid currentColor;
+      outline-offset: max(1px, 0.15em);
+    }
+  }
+  @supports not selector(:focus-visible) {
+    :focus {
+      outline: max(1px, 0.15em) solid currentColor;
+      outline-offset: max(1px, 0.15em);
+    }
+  }
+  :target {
+    scroll-padding-block-start: 2rem;
+  }
+  :focus {
+    scroll-padding-block-end: 8vh;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms;
+      animation-delay: -1ms;
+      animation-iteration-count: 1;
+      transition-duration: 0s;
+      transition-delay: 0s;
+      scroll-behavior: auto;
+      background-attachment: initial;
+      perspective: none;
+      transform-style: flat;
     }
   }
   /* This is for accessibility purposes */

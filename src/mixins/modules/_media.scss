@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains a `media` mixin that will be used to
+// * reset media elements like images, videos, and objects.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin media {
+    // * Set default styles for images, videos, canvases, and SVGs
+    // *
+    // * - `height` are set to `auto` so that the element
+    // *   will not exceed the height of its container.
+    // * - `font-style: italic;` is set to prevent any font styles from being
+    // *   inherited from the parent element.
+    // * - `background-repeat: no-repeat;` is set to prevent the background
+    // *   image from repeating.
+    // * - `background-size: cover;` is set to scale the background image to
+    // *   cover the entire element.
+    // * - `shape-margin: 1rem;` is set to add a margin around the element
+    // *   and improve text wrapping.
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+      height: auto;
+      font-style: italic;
+      background-repeat: no-repeat;
+      background-size: cover;
+      shape-margin: 1rem;
+    }
+
+    // * Set default styles for:
+    // * `img`, `picture`, `video`, `canvas`, `svg`, `object` and `embed` elements.
+    // *
+    // * The following CSS properties are applied to ensure consistent styling
+    // * across different browsers for these elements:
+    // *
+    // * - `max-width` are set to `100%` so that the
+    // *   element will not exceed the width of its container.
+    // *
+    // * Note: The `--rz-asset-max-width` variable is used to allow users to
+    // * override the default value of `100%`.
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg,
+    object,
+    embed {
+      max-width: 100%;
+    }
+
+    // * Remove border from object and embed elements.
+    // *
+    // * The object and embed elements have a default border that is not
+    // * visually appealing. Therefore, we remove the border by setting
+    // * `border` to `none`.
+    // *
+    // * Note: This is a minimal reset and only applies to the object and
+    // * embed elements. Other elements may still have a default border.
+    // *
+    // * To customize the border, you can use the following CSS properties:
+    // * `border-width`, `border-style`, `border-color`, `border-radius`, etc.
+
+    object,
+    embed {
+      border: none;
+    }
+
+    // * Hide audio elements that do not have a controls attribute.
+    // * This is useful for preventing audio elements from being rendered
+    // * when they do not have any visible controls.
+    // *
+    // * The :not pseudo-class is used to select all audio elements that
+    // * do not have a controls attribute. The [controls] attribute is
+    // * used to indicate that the audio element should have visible controls.
+    // *
+    // * The display property is set to none to hide the audio element.
+    // *
+    // * For more information on the :not pseudo-class, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/CSS/:not
+    // *
+    // * For more information on the controls attribute, see the following
+    // * resources:
+    // * - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+
+    audio {
+      :not([controls]) {
+        display: none;
+      }
+    }
+}

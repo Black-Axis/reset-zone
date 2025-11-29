@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains a `tables` mixin that will be used to
+// * reset table elements.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin tables {
+    // * Removes spacing between cells in tables
+    // *
+    // * The `border-collapse: collapse;` property is used to collapse
+    // * the borders of adjacent table cells into a single border,
+    // * eliminating space between cells. This helps create a cleaner
+    // * and more organized appearance for tables.
+    // *
+    // * The `border-spacing: 0;` property is used to set the spacing
+    // * between table cells to zero. This ensures that there is no gap
+    // * between the cells, further enhancing the compact look of the
+    // * table layout.
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+}

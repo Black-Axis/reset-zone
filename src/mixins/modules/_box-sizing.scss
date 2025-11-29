@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains a `box-sizing` mixin that will be used to
+// * apply a universal box-sizing rule to all elements.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin box-sizing {
+    // * Box sizing rules.
+    // * Apply a universal box-sizing rule to all elements, including
+    // * pseudo-elements, backdrop pseudo-elements and file selector
+    // * button pseudo-elements. This resets margin and padding to prevent
+    // * default browser styles from interfering, and ensures that the
+    // * box-sizing property is set to border-box.
+    // *
+    // * Using border-box makes it easier to manage size and layout as
+    // * the padding and border are included within the element's
+    // * specified width and height.
+
+    *,
+    *::before,
+    *::after,
+    ::backdrop,
+    ::file-selector-button {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+}

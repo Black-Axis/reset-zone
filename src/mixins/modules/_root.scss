@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+// @summary
+// * The current file contains a `root` mixin that will be used to
+// * set core root defaults for html and body elements.
+
+// @version 3.2.0
+
+// @access private
+
+// @author Khaled Mohamed
+
+// @license MIT
+
+// @repository: https://github.com/Black-Axis/reset-zone
+
+@mixin root {
+    // * Set core root defaults.
+    // *
+    // * Smooth scrolling for all desktop devices
+    // * This is for accessibility purposes and only when the user
+    // * prefers reduced motion. It is not enabled by default.
+
+    html,
+    html:focus-within {
+      // * Enable smooth scrolling only when the user prefers reduced
+      // * motion. This is for accessibility purposes.
+      @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth;
+      }
+
+      // * Disable smooth scrolling for users who prefer reduced motion
+      // * and are using a touch device.
+      @media (prefers-reduced-motion: reduce) {
+        scroll-behavior: auto;
+      }
+    }
+
+    // * Set core body defaults
+    // *
+    // * Set the minimum body height to viewport height, to prevent
+    // * the content from being rendered outside of the viewport.
+    // *
+    // * This is important for accessibility and to prevent that
+    // * users with small screens or users with assistive technologies
+    // * to zoom in and out to see the content.
+
+    body {
+      min-height: 100dvh;
+      line-height: 1.5;
+
+      // * Improve text rendering in the browsers
+      -webkit-font-smoothing: antialiased;
+
+      // * Allow to break long words to avoid overflowing the container
+      // * This is important for accessibility and to prevent that
+      // * users with small screens or users with assistive technologies
+      // * to zoom in and out to see the content.
+      // stylelint-disable-next-line scss/selector-no-redundant-nesting-selector
+      :where(&) {
+        overflow-wrap: break-word;
+        hyphens: auto;
+      }
+    }
+}
