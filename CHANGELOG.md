@@ -8,6 +8,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Planned
 - Additional examples for popular frameworks
 
+## [3.2.1] - 2026-01-04
+
+### Fixed
+- **CSS Selector Bug**: Fixed incorrect space in `audio :not([controls])` selector
+  - Changed from nested syntax that generated `audio :not([controls])` (with space)
+  - To flat syntax that generates `audio:not([controls])` (without space)
+  - This ensures the selector targets audio elements without controls attribute, not their children
+- **Version Synchronization**: Synchronized version numbers across all SCSS files and documentation
+  - Updated all 12 module files in `src/mixins/modules/`
+  - Updated entry files `src/reset-zone.regular.scss` and `src/reset-zone.layer.scss`
+  - Updated `index.scss` to match package.json version
+
+---
+
 ## [3.2.0] - 2025-11-29
 
 ### Added
@@ -151,6 +165,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and th
 
 ---
 
-[Unreleased]: https://github.com/Black-Axis/reset-zone/compare/v3.2.0...HEAD
+[Unreleased]: https://github.com/Black-Axis/reset-zone/compare/v3.2.1...HEAD
+[3.2.1]: https://github.com/Black-Axis/reset-zone/compare/v3.2.0...v3.2.1
 [3.2.0]: https://github.com/Black-Axis/reset-zone/compare/v3.0.0...v3.2.0
 [3.0.0]: https://github.com/Black-Axis/reset-zone/releases/tag/v3.0.0

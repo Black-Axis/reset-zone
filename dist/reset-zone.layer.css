@@ -170,7 +170,7 @@
   embed {
     border: none;
   }
-  audio :not([controls]) {
+  audio:not([controls]) {
     display: none;
   }
   ul[role=list],
