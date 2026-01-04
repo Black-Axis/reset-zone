@@ -9,6 +9,7 @@ node_modules
 /tests/
 /__tests__/
 /docs/
+/scripts/
 
 .browserslistrc
 .editorconfig
