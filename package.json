@@ -66,6 +66,13 @@
     "tags:github": "git push repo --tags",
     "tags:gitlab": "git push gitlab --tags"
   },
+  "resolutions": {
+    "cross-spawn": "^7.0.5",
+    "js-yaml": "^4.1.0",
+    "tmp": "^0.2.4",
+    "glob": "^10.5.0",
+    "brace-expansion": "^2.0.2"
+  },
   "devDependencies": {
     "autoprefixer": "^10.4.23",
     "concurrently": "^9.2.1",
