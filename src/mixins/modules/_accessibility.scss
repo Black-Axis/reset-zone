@@ -321,7 +321,8 @@
       padding: 0;
       margin: 0;
       overflow: visible;
-      clip-path: auto;
+      clip: auto;
+      clip-path: none;
       white-space: normal;
     }
 }
