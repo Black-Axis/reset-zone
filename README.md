@@ -1,5 +1,13 @@
 # reset-zone
 
+[![npm version](https://img.shields.io/npm/v/reset-zone.svg?style=flat-square)](https://www.npmjs.com/package/reset-zone)
+[![npm downloads](https://img.shields.io/npm/dm/reset-zone.svg?style=flat-square)](https://www.npmjs.com/package/reset-zone)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/reset-zone?style=flat-square)](https://bundlephobia.com/package/reset-zone)
+[![license](https://img.shields.io/npm/l/reset-zone.svg?style=flat-square)](https://github.com/Black-Axis/reset-zone/blob/master/LICENSE.md)
+[![GitHub stars](https://img.shields.io/github/stars/Black-Axis/reset-zone?style=flat-square)](https://github.com/Black-Axis/reset-zone/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/Black-Axis/reset-zone?style=flat-square)](https://github.com/Black-Axis/reset-zone/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Black-Axis/reset-zone?style=flat-square)](https://github.com/Black-Axis/reset-zone/commits/master)
+
 **reset-zone** is a lightweight CSS reset designed to provide a consistent starting point for web projects. This CSS reset resets browser styling and removes default margins, padding, and other styles, giving you full control over the appearance of your elements across all major browsers.
 
 ## Table of Contents

@@ -18,38 +18,38 @@
  * @license MIT
  */
 
-const fs = require('fs');
-const path = require('path');
+const fs = require(`fs`);
+const path = require(`path`);
 
 const colors = {
-  reset: '\x1b[0m',
-  bright: '\x1b[1m',
-  green: '\x1b[32m',
-  yellow: '\x1b[33m',
-  blue: '\x1b[34m',
-  red: '\x1b[31m',
-  cyan: '\x1b[36m'
+  reset: `\x1b[0m`,
+  bright: `\x1b[1m`,
+  green: `\x1b[32m`,
+  yellow: `\x1b[33m`,
+  blue: `\x1b[34m`,
+  red: `\x1b[31m`,
+  cyan: `\x1b[36m`,
 };
 
 const FILES_CONFIG = [
   {
-    path: 'index.scss',
+    path: `index.scss`,
     pattern: /\/\/ @version \d+\.\d+\.\d+/,
     replacement: (version) => `// @version ${version}`,
-    description: 'Main entry file'
+    description: `Main entry file`,
   },
   {
-    path: 'src/reset-zone.regular.scss',
+    path: `src/reset-zone.regular.scss`,
     pattern: /\/\/ @version \d+\.\d+\.\d+/,
     replacement: (version) => `// @version ${version}`,
-    description: 'Regular entry file'
+    description: `Regular entry file`,
   },
   {
-    path: 'src/reset-zone.layer.scss',
+    path: `src/reset-zone.layer.scss`,
     pattern: /\/\/ @version \d+\.\d+\.\d+/,
     replacement: (version) => `// @version ${version}`,
-    description: 'Layer entry file'
-  }
+    description: `Layer entry file`,
+  },
 ];
 
 const MODULE_FILES = [
@@ -71,7 +71,7 @@ MODULE_FILES.forEach(file => {
     path: `src/mixins/modules/${file}`,
     pattern: /\/\/ @version \d+\.\d+\.\d+/,
     replacement: (version) => `// @version ${version}`,
-    description: `Module: ${file}`
+    description: `Module: ${file}`,
   });
 });
 
@@ -81,8 +81,8 @@ function isValidVersion(version) {
 
 function getPackageVersion() {
   try {
-    const packagePath = path.join(process.cwd(), 'package.json');
-    const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
+    const packagePath = path.join(process.cwd(), `package.json`);
+    const packageJson = JSON.parse(fs.readFileSync(packagePath, `utf8`));
 
     return packageJson.version;
   } catch (error) {
@@ -99,20 +99,26 @@ function updateFileVersion(filePath, version, pattern, replacement, dryRun = fal
     if (!fs.existsSync(fullPath)) {
       console.log(`  ${colors.yellow}⚠${colors.reset}  ${filePath} - File not found, skipping`);
 
-      return { updated: false, skipped: true };
+      return {
+        updated: false,
+        skipped: true,
+      };
     }
 
-    const content = fs.readFileSync(fullPath, 'utf8');
+    const content = fs.readFileSync(fullPath, `utf8`);
     const newContent = content.replace(pattern, replacement(version));
 
     if (content === newContent) {
       console.log(`  ${colors.blue}ℹ${colors.reset}  ${filePath} - Already up to date`);
 
-      return { updated: false, skipped: false };
+      return {
+        updated: false,
+        skipped: false,
+      };
     }
 
     if (!dryRun) {
-      fs.writeFileSync(fullPath, newContent, 'utf8');
+      fs.writeFileSync(fullPath, newContent, `utf8`);
 
       console.log(`  ${colors.green}✓${colors.reset}  ${filePath} - Updated to ${version}`);
     } else {
@@ -135,7 +141,7 @@ function updateFileVersion(filePath, version, pattern, replacement, dryRun = fal
 }
 
 function updateChangelog(version, dryRun = false) {
-  const changelogPath = path.join(process.cwd(), 'CHANGELOG.md');
+  const changelogPath = path.join(process.cwd(), `CHANGELOG.md`);
 
   try {
     if (!fs.existsSync(changelogPath)) {
@@ -147,7 +153,7 @@ function updateChangelog(version, dryRun = false) {
       };
     }
 
-    const content = fs.readFileSync(changelogPath, 'utf8');
+    const content = fs.readFileSync(changelogPath, `utf8`);
 
     if (content.includes(`## [${version}]`)) {
       console.log(`  ${colors.blue}ℹ${colors.reset}  CHANGELOG.md - Version ${version} already exists`);
@@ -158,7 +164,7 @@ function updateChangelog(version, dryRun = false) {
       };
     }
 
-    const date = new Date().toISOString().split('T')[0];
+    const date = new Date().toISOString().split(`T`)[0];
 
     const versionEntry = `## [${version}] - ${date}
         ### Added
@@ -180,7 +186,7 @@ function updateChangelog(version, dryRun = false) {
     );
 
     if (!dryRun) {
-      fs.writeFileSync(changelogPath, newContent, 'utf8');
+      fs.writeFileSync(changelogPath, newContent, `utf8`);
       console.log(`  ${colors.green}✓${colors.reset}  CHANGELOG.md - Added version ${version} entry`);
     } else {
       console.log(`  ${colors.cyan}→${colors.reset}  CHANGELOG.md - Would add version ${version} entry`);
@@ -209,11 +215,11 @@ function main() {
   let syncMode = false;
 
   for (const arg of args) {
-    if (arg === '--dry-run' || arg === '-d') {
+    if (arg === `--dry-run` || arg === `-d`) {
       dryRun = true;
-    } else if (arg === '--sync' || arg === '-s') {
+    } else if (arg === `--sync` || arg === `-s`) {
       syncMode = true;
-    } else if (arg === '--help' || arg === '-h') {
+    } else if (arg === `--help` || arg === `-h`) {
       console.log(`
         ${colors.bright}Version Update Script${colors.reset}
 
@@ -246,14 +252,14 @@ function main() {
     console.log(`${colors.bright}Syncing to package.json version: ${version}${colors.reset}\n`);
   } else if (!version) {
     console.error(`${colors.red}Error: Version number required${colors.reset}`);
-    console.log('Run with --help for usage information');
+    console.log(`Run with --help for usage information`);
 
     process.exit(1);
   }
 
   if (!isValidVersion(version)) {
     console.error(`${colors.red}Error: Invalid version format "${version}"${colors.reset}`);
-    console.log('Version must follow semantic versioning (e.g., 3.2.1)');
+    console.log(`Version must follow semantic versioning (e.g., 3.2.1)`);
 
     process.exit(1);
   }
