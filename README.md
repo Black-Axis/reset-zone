@@ -15,6 +15,7 @@
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
+- [Browser Support](#browser-support)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -201,6 +202,29 @@ For more information about CSS layers, see the [MDN documentation](https://devel
 - `Consistent Typography`: Sets up base font styles, including font size and line height.
 - `Improved Accessibility`: Sets a clear focus outline and maintains usability for keyboard navigation.
 - `Enhanced Layout Control`: Reduces browser-specific quirks that interfere with layout styling, such as `box-sizing`.
+
+## Browser Support
+
+**reset-zone** is designed for modern browsers and targets the following support baseline (`> 0.5%, last 2 versions, not dead`):
+
+| Browser | Supported Versions |
+|---------|-------------------|
+| Chrome  | Last 2 versions   |
+| Firefox | Last 2 versions   |
+| Safari  | Last 2 versions   |
+| Edge    | Last 2 versions   |
+| Opera   | Last 2 versions   |
+
+### Modern Features
+
+This project utilizes modern CSS features to provide a robust and lightweight reset. Please ensure your target environment supports:
+
+- **[CSS Layers (`@layer`)](https://caniuse.com/css-cascade-layers)**: Supported in all modern browsers since 2022.
+- **[`:where()` pseudo-class](https://caniuse.com/css-where)**: For zero-specificity overrides.
+- **[Logical Properties](https://caniuse.com/css-logical-props)**: For internationalization support (RTL/LTR).
+
+> [!NOTE]
+> If you need to support older browsers (Internet Explorer), you will need to use PostCSS plugins to transpile these features or stick to version 2.x of this package.
 
 ## Contributing
 Contributions, issues, and feature requests are welcome!
