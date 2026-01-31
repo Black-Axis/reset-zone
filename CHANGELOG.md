@@ -8,6 +8,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Planned
 - Additional examples for popular frameworks
 
+## [4.0.0] - 2026-01-31
+
+### Added
+- **Add CSS Banners**: Professional headers with version, copyright, and license information are now automatically injected into all compiled CSS files (`.css` and `.min.css`).
+- **Standardized File Extensions**: Renamed all SCSS module files in `src/mixins/modules/` to use the `.rz.scss` extension (e.g., `_accessibility.rz.scss`) for better file type identification.
+- **Dynamic SCSS Versioning**: New automation script [update-version.js](file:///d:/Libraries/reset-zone/scripts/update-version.js) that dynamically scans the entire `src` directory to synchronize version comments in all SCSS files.
+- **Standalone Banner Utility**: Created [add-banner.js](file:///d:/Libraries/reset-zone/scripts/add-banner.js) to handle banner injection for expanded CSS files without requiring full PostCSS processing.
+- **Improved Build Pipeline**: Dedicated banner generation utility [generate-banner.js](file:///d:/Libraries/reset-zone/scripts/generate-banner.js) that reads metadata directly from `package.json`.
+
+### Changed
+- **Breaking**: Updated PostCSS build configuration to support separate processing for regular (expanded) and minified CSS output.
+- **Breaking**: Renamed SCSS internal modules to use `.rz.scss` extension; internal imports should be updated if bypassing the main index.
+- **Expanded CSS Output**: Non-minified CSS files now properly preserve formatting while including the version banner.
+- **Build Organization**: Moved `postcss.regular.config.js` to the `scripts/` directory for better project structure.
+- **Duplicate Prevention**: Improved PostCSS plugin logic to prevent duplicate banners in minified files.
+
+---
+
 ## [3.2.1] - 2026-01-04
 
 ### Fixed
@@ -99,7 +117,9 @@ Previous versions used the `@import` syntax and are no longer maintained. Please
 
 | Version | Release Date | Major Changes |
 |---------|--------------|---------------|
-| 3.2.0   | 2025-11-29   | Modular architecture, enhanced documentation |
+| 4.0.0   | 2026-01-31   | Add banners, Dynamic SCSS versioning |
+| 3.2.1   | 2026-01-04   | CSS selector fix, Version synchronization        |
+| 3.2.0   | 2025-11-29   | Modular architecture, enhanced documentation    |
 | 3.0.0   | 2024-XX-XX   | Modern Sass `@use`, CSS Layers, compiled distributions |
 | 2.x.x   | Legacy       | Legacy `@import` syntax (deprecated) |
 
@@ -165,7 +185,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and th
 
 ---
 
-[Unreleased]: https://github.com/Black-Axis/reset-zone/compare/v3.2.1...HEAD
+[Unreleased]: https://github.com/Black-Axis/reset-zone/compare/v4.0.0...HEAD
+[4.0.0]: https://github.com/Black-Axis/reset-zone/compare/v3.2.1...v4.0.0
 [3.2.1]: https://github.com/Black-Axis/reset-zone/compare/v3.2.0...v3.2.1
 [3.2.0]: https://github.com/Black-Axis/reset-zone/compare/v3.0.0...v3.2.0
 [3.0.0]: https://github.com/Black-Axis/reset-zone/releases/tag/v3.0.0
