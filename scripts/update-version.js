@@ -31,49 +31,65 @@ const colors = {
   cyan: `\x1b[36m`,
 };
 
-const FILES_CONFIG = [
-  {
+/**
+ * Recursively finds all SCSS files in a directory
+ * @param {string} dir - Directory to search
+ * @param {string[]} fileList - Accumulated list of files
+ * @returns {string[]} Array of file paths
+ */
+function findScssFiles(dir, fileList = []) {
+  const files = fs.readdirSync(dir);
+
+  files.forEach(file => {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat.isDirectory()) {
+      findScssFiles(filePath, fileList);
+    } else if (file.endsWith('.scss')) {
+      fileList.push(filePath);
+    }
+  });
+
+  return fileList;
+}
+
+/**
+ * Generates FILES_CONFIG dynamically by scanning the src directory
+ * @returns {Array} Configuration array for all SCSS files
+ */
+function generateFilesConfig() {
+  const config = [];
+
+  // Add main entry files
+  config.push({
     path: `index.scss`,
     pattern: /\/\/ @version \d+\.\d+\.\d+/,
     replacement: (version) => `// @version ${version}`,
     description: `Main entry file`,
-  },
-  {
-    path: `src/reset-zone.regular.scss`,
-    pattern: /\/\/ @version \d+\.\d+\.\d+/,
-    replacement: (version) => `// @version ${version}`,
-    description: `Regular entry file`,
-  },
-  {
-    path: `src/reset-zone.layer.scss`,
-    pattern: /\/\/ @version \d+\.\d+\.\d+/,
-    replacement: (version) => `// @version ${version}`,
-    description: `Layer entry file`,
-  },
-];
-
-const MODULE_FILES = [
-  `_accessibility.scss`,
-  `_box-sizing.scss`,
-  `_dialog.scss`,
-  `_forms.scss`,
-  `_layout.scss`,
-  `_lists.scss`,
-  `_media.scss`,
-  `_print.scss`,
-  `_root.scss`,
-  `_tables.scss`,
-  `_typography.scss`,
-];
-
-MODULE_FILES.forEach(file => {
-  FILES_CONFIG.push({
-    path: `src/mixins/modules/${file}`,
-    pattern: /\/\/ @version \d+\.\d+\.\d+/,
-    replacement: (version) => `// @version ${version}`,
-    description: `Module: ${file}`,
   });
-});
+
+  // Find all SCSS files in src directory
+  const srcDir = path.join(process.cwd(), 'src');
+
+  if (fs.existsSync(srcDir)) {
+    const scssFiles = findScssFiles(srcDir);
+
+    scssFiles.forEach(filePath => {
+      const relativePath = path.relative(process.cwd(), filePath);
+      const fileName = path.basename(filePath);
+
+      config.push({
+        path: relativePath,
+        pattern: /\/\/ @version \d+\.\d+\.\d+/,
+        replacement: (version) => `// @version ${version}`,
+        description: `SCSS file: ${fileName}`,
+      });
+    });
+  }
+
+  return config;
+}
 
 function isValidVersion(version) {
   return /^\d+\.\d+\.\d+$/.test(version);
@@ -277,6 +293,9 @@ function main() {
   };
 
   console.log(`${colors.bright}Updating SCSS files:${colors.reset}`);
+
+  // Generate FILES_CONFIG dynamically
+  const FILES_CONFIG = generateFilesConfig();
 
   FILES_CONFIG.forEach(config => {
     const result = updateFileVersion(
