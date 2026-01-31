@@ -3531,6 +3531,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"postcss-banner@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "postcss-banner@npm:4.0.1"
+  dependencies:
+    postcss: "npm:^8.2.2"
+  checksum: 10/349c482efb97529f50193a88cf2f5d1f2e318fa492d0e7344e119982fc555a90255f1b5dfc40bfe2598633b71320ebedd2832477d3d5cc6c0d1b8d1e2dd89cb8
+  languageName: node
+  linkType: hard
+
 "postcss-clamp@npm:^4.1.0":
   version: 4.1.0
   resolution: "postcss-clamp@npm:4.1.0"
@@ -4028,7 +4037,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.5.6":
+"postcss@npm:^8.2.2, postcss@npm:^8.5.6":
   version: 8.5.6
   resolution: "postcss@npm:8.5.6"
   dependencies:
@@ -4161,6 +4170,7 @@ __metadata:
     nodemon: "npm:^3.1.11"
     npm-check-updates: "npm:^19.2.1"
     postcss: "npm:^8.5.6"
+    postcss-banner: "npm:^4.0.1"
     postcss-cli: "npm:^11.0.1"
     postcss-minify: "npm:^1.2.0"
     postcss-preset-env: "npm:^10.6.0"
