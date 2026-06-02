@@ -102,7 +102,7 @@
     // * resources:
     // * - https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-disabled
 
-    [aria-disabled] {
+    [aria-disabled="true"] {
       cursor: default;
     }
 
@@ -276,8 +276,7 @@
     // * to screen readers. It is also used to hide the content that is not visible
     // * but should be accessible to assistive technologies.
     // *
-    // * The content will be hidden visually but will be accessible to screen readers.
-    // * It will also be hidden from assistive technologies.
+    // * The content will be hidden visually but will remain accessible to screen readers.
     // *
     // * The content will be read by screen readers and will be accessible to assistive
     // * technologies.
