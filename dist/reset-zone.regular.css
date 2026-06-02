@@ -72,8 +72,7 @@ sub {
 }
 
 a:not([class]) {
-  -webkit-text-decoration-skip: ink;
-          text-decoration-skip-ink: auto;
+  text-decoration-skip-ink: auto;
   text-decoration-line: underline;
   text-decoration-thickness: max(0.08em, 1px);
   text-underline-offset: 0.15em;
@@ -108,9 +107,7 @@ samp {
   font-family: var(--rz-code-font, inherit);
   font-size: inherit;
   white-space: pre-wrap;
-  -moz-tab-size: 2;
-    -o-tab-size: 2;
-       tab-size: 2;
+  tab-size: 2;
 }
 
 br + br {
@@ -257,11 +254,6 @@ data {
   font: inherit;
 }
 
-::-moz-placeholder {
-  color: inherit;
-  opacity: 0.5;
-}
-
 ::placeholder {
   color: inherit;
   opacity: 0.5;
@@ -341,7 +333,7 @@ dialog::backdrop {
   cursor: pointer;
 }
 
-[aria-disabled] {
+[aria-disabled=true] {
   cursor: default;
 }
 
