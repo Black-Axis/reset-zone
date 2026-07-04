@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@use "src/mixins/modules" as Core;
+@use "src/modules" as Core;
 
 // @summary
 // * The current file contains two mixins that can be used to reset all
@@ -16,7 +16,7 @@
 // * prefixes of all CSS properties which is very important in production.
 // * You can read file `README.md` to know how to use the package.
 
-// @version 4.0.0
+// @version 5.0.0
 
 // @access public
 

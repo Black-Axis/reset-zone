@@ -4,9 +4,9 @@
 // * The current file contains a `root` mixin that will be used to
 // * set core root defaults for html and body elements.
 
-// @version 4.0.0
+// @version 5.0.0
 
-// @access private
+// @access public
 
 // @author Khaled Mohamed
 
@@ -14,28 +14,7 @@
 
 // @repository: https://github.com/Black-Axis/reset-zone
 
-@mixin root {
-    // * Set core root defaults.
-    // *
-    // * Smooth scrolling for all desktop devices
-    // * This is for accessibility purposes and only when the user
-    // * prefers reduced motion. It is not enabled by default.
-
-    html,
-    html:focus-within {
-      // * Enable smooth scrolling only when the user prefers reduced
-      // * motion. This is for accessibility purposes.
-      @media (prefers-reduced-motion: no-preference) {
-        scroll-behavior: smooth;
-      }
-
-      // * Disable smooth scrolling for users who prefer reduced motion
-      // * and are using a touch device.
-      @media (prefers-reduced-motion: reduce) {
-        scroll-behavior: auto;
-      }
-    }
-
+@mixin body {
     // * Set core body defaults
     // *
     // * Set the minimum body height to viewport height, to prevent

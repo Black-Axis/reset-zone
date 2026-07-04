@@ -3,6 +3,7 @@
 // stylelint-disable-next-line at-rule-empty-line-before
 @use "box-sizing.rz" as *;
 @use "root.rz" as *;
+@use "body.rz" as *;
 @use "typography.rz" as *;
 @use "layout.rz" as *;
 @use "media.rz" as *;
@@ -25,7 +26,7 @@
 // * prefixes of all CSS properties which is very important in production.
 // * You can read file `README.md` to know how to use the package.
 
-// @access private
+// @access public
 
 // @author Khaled Mohamed
 
@@ -36,6 +37,7 @@
 @mixin reset-zone() {
     @include box-sizing;
     @include root;
+    @include body;
     @include typography;
     @include layout;
     @include media;
