@@ -73,7 +73,7 @@
   },
   "resolutions": {
     "cross-spawn": "^7.0.5",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.2.0",
     "tmp": "0.2.7",
     "lodash": "^4.18.1",
     "tar": "^7.5.8",
