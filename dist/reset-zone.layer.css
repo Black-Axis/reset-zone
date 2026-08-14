@@ -14,14 +14,12 @@
     box-sizing: border-box;
   }
   @media (prefers-reduced-motion: no-preference) {
-    html,
-    html:focus-within {
+    html {
       scroll-behavior: smooth;
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    html,
-    html:focus-within {
+    html {
       scroll-behavior: auto;
     }
   }
@@ -29,6 +27,7 @@
     min-height: 100dvh;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   :where(body) {
     overflow-wrap: break-word;
@@ -69,6 +68,15 @@
     text-decoration-line: underline;
     text-decoration-thickness: max(0.08em, 1px);
     text-underline-offset: 0.15em;
+  }
+  mark,
+  small,
+  dfn,
+  abbr,
+  cite,
+  time,
+  data {
+    font: inherit;
   }
   figcaption {
     font-style: italic;
@@ -154,6 +162,8 @@
   canvas,
   svg {
     height: auto;
+  }
+  img {
     font-style: italic;
     background-repeat: no-repeat;
     background-size: cover;
@@ -182,7 +192,6 @@
   }
   meter,
   progress {
-    width: 100%;
     max-width: calc(100% - 1rem);
     height: 1.25rem;
     margin-block: 0.5rem;
@@ -219,14 +228,7 @@
   button,
   textarea,
   select,
-  option,
-  mark,
-  small,
-  dfn,
-  abbr,
-  cite,
-  time,
-  data {
+  option {
     font: inherit;
   }
   ::placeholder {
@@ -235,7 +237,6 @@
   }
   table {
     border-collapse: collapse;
-    border-spacing: 0;
   }
   dialog {
     max-width: 90%;
@@ -250,9 +251,15 @@
     scrollbar-color: transparent transparent;
     animation: rz-bottom-to-top 0.25s ease-in-out forwards;
   }
-  @media only screen and (width > 767px) {
+  @media (width > 767px) {
     dialog {
       max-width: 45rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    dialog {
+      scroll-behavior: auto;
+      animation: none;
     }
   }
   dialog::-webkit-scrollbar {
@@ -266,8 +273,7 @@
     background-color: transparent;
   }
   dialog::backdrop {
-    background-color: hsl(0, 0%, 0%);
-    opacity: 0.5;
+    background-color: hsla(0, 0%, 0%, 0.5);
   }
   @keyframes rz-bottom-to-top {
     0% {
@@ -287,15 +293,8 @@
       content: " (" attr(href) ")";
     }
   }
-  @supports selector(:where) {
-    :where([hidden]) {
-      display: none;
-    }
-  }
-  @supports not selector(:where) {
-    [hidden] {
-      display: none;
-    }
+  :where([hidden]) {
+    display: none;
   }
   [aria-busy=true] {
     cursor: progress;
@@ -304,19 +303,11 @@
     cursor: pointer;
   }
   [aria-disabled=true] {
-    cursor: default;
+    cursor: not-allowed;
   }
-  @supports selector(:focus-visible) {
-    :focus-visible {
-      outline: max(1px, 0.15em) solid currentColor;
-      outline-offset: max(1px, 0.15em);
-    }
-  }
-  @supports not selector(:focus-visible) {
-    :focus {
-      outline: max(1px, 0.15em) solid currentColor;
-      outline-offset: max(1px, 0.15em);
-    }
+  :focus-visible {
+    outline: max(1px, 0.15em) solid currentColor;
+    outline-offset: max(1px, 0.15em);
   }
   :target {
     scroll-padding-block-start: 2rem;
@@ -339,7 +330,6 @@
       transform-style: flat;
     }
   }
-  /* This is for accessibility purposes */
   .sr-only {
     width: 1px;
     height: 1px;
@@ -351,7 +341,6 @@
     overflow: hidden;
     white-space: nowrap;
   }
-  /* This is for accessibility purposes */
   .not-sr-only {
     width: auto;
     height: auto;
