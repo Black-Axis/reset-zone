@@ -31,3 +31,15 @@ There is no build/test/typecheck command beyond `lint` and the `sass` compile �
 - Every module carries a doc header: `@summary` / `@version` / `@access` / `@author` / `@license` / `@repository` — match this when adding a module.
 - Stylelint (`.stylelintrc`, extends `stylelint-config-standard(-scss)`): `!important` disallowed, hex colors must be long-form, no named colors, custom properties and keyframe names must match `rz-.+`.
 - Browser target (`.browserslistrc`): `> 0.5%, last 2 versions, not dead`. The reset relies on CSS `@layer`, `:where()`, and logical properties — no IE support (the 2.x release line is the legacy fallback for older browsers).
+
+## Pull requests
+
+When creating a PR (`gh pr create`), use `.github/Pull_request_template.md` as the `--body` — fill in its sections (`Issue | Task Number`, `What does this pull request do?`, `What is the relevant issue link`, `Screenshot`, `Any additional information?`) instead of the default Summary/Test plan format.
+
+## Issues
+
+When creating an issue (`gh issue create`), pick the matching template from `.github/ISSUE_TEMPLATE/` and fill in its sections as the `--body`:
+
+- **`bug.md`** — bug reports: Describe the bug, To Reproduce, Expected behavior, Screenshots, Desktop/Smartphone info, Additional context. Title prefix `[BUG] - `, label `bug`.
+- **`feature.md`** — feature requests: problem description, Describe the solution you'd like, Describe alternatives you've considered, Additional context. Title prefix `[FEAT] - `, label `feature`.
+- **`docs.md`** — documentation/workflow changes: What will you like to add or remove?, Typo fix?, Workflow. Title prefix `[DOCS] - `, label `documentation`.
