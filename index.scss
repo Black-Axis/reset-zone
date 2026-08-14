@@ -8,8 +8,9 @@
 // * `rz-layer()`. The `rz()` mixin is used to simply reset the HTML elements
 // * without any CSS layers. The `rz-layer()` mixin is used to reset the HTML
 // * elements and add a CSS layer to the elements. The layer is specified by the
-// * first argument of the mixin. The layer is used to allow users to override
-// * the default values of the CSS variables.
+// * first argument of the mixin. The layer is used to lower the cascade
+// * priority of the reset, so consumers can override any of its styles
+// * without needing to fight specificity.
 // *
 // * You can also use the compiled files in `dist` directory as it is the
 // * recommended way to use the package. The compiled files contain vendor
