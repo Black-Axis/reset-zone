@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 // @summary
-// * The current file contains a `root` mixin that will be used to
-// * set core root defaults for html and body elements.
+// * The current file contains a `body` mixin that will be used to
+// * set core body defaults for the body element.
 
 // @version 5.0.0
 
@@ -15,30 +15,28 @@
 // @repository: https://github.com/Black-Axis/reset-zone
 
 @mixin body {
-    // * Set core body defaults
-    // *
-    // * Set the minimum body height to viewport height, to prevent
-    // * the content from being rendered outside of the viewport.
-    // *
-    // * This is important for accessibility and to prevent that
-    // * users with small screens or users with assistive technologies
-    // * to zoom in and out to see the content.
+  // * Set core body defaults
+  // *
+  // * Set the minimum body height to viewport height, to prevent
+  // * the content from being rendered outside of the viewport.
+  // *
+  // * This is important for accessibility and to prevent that
+  // * users with small screens or users with assistive technologies
+  // * to zoom in and out to see the content.
 
-    body {
-      min-height: 100dvh;
-      line-height: 1.5;
+  body {
+    min-height: 100dvh;
+    line-height: 1.5;
 
-      // * Improve text rendering in the browsers
-      -webkit-font-smoothing: antialiased;
+    // * Improve text rendering in the browsers
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-      // * Allow to break long words to avoid overflowing the container
-      // * This is important for accessibility and to prevent that
-      // * users with small screens or users with assistive technologies
-      // * to zoom in and out to see the content.
-      // stylelint-disable-next-line scss/selector-no-redundant-nesting-selector
-      :where(&) {
-        overflow-wrap: break-word;
-        hyphens: auto;
-      }
-    }
+  // * Zero-specificity so consumers can override word-breaking rules
+  // * without needing to fight specificity.
+  :where(body) {
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
 }
