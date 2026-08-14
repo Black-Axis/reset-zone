@@ -10,11 +10,11 @@
 @use "lists.rz" as *;
 @use "forms.rz" as *;
 @use "tables.rz" as *;
-@use "accessibility.rz" as *;
 @use "dialog.rz" as *;
 @use "print.rz" as *;
+@use "accessibility.rz" as *;
 
-// @description
+// @summary
 // * A mixin that resets all basic HTML elements to their default
 // * styles, which are defined by the W3C specification. This is
 // * useful for ensuring that all browsers render the HTML elements
@@ -26,6 +26,8 @@
 // * prefixes of all CSS properties which is very important in production.
 // * You can read file `README.md` to know how to use the package.
 
+// @version 5.0.0
+
 // @access public
 
 // @author Khaled Mohamed
@@ -35,16 +37,16 @@
 // @repository: https://github.com/Black-Axis/reset-zone
 
 @mixin reset-zone() {
-    @include box-sizing;
-    @include root;
-    @include body;
-    @include typography;
-    @include layout;
-    @include media;
-    @include lists;
-    @include forms;
-    @include tables;
-    @include dialog;
-    @include print;
-    @include accessibility;
+  @include box-sizing;
+  @include root;
+  @include body;
+  @include typography;
+  @include layout;
+  @include media;
+  @include lists;
+  @include forms;
+  @include tables;
+  @include dialog;
+  @include print;
+  @include accessibility;
 }

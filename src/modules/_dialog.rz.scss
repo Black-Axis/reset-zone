@@ -15,82 +15,86 @@
 // @repository: https://github.com/Black-Axis/reset-zone
 
 @mixin dialog {
-    // * The styles applied to the `<dialog>` element.
-    // *
-    // * The max-width and max-height are set to 90% of the viewport width and
-    // * 85dvh of the viewport height respectively. This is to ensure that the
-    // * dialog is not too wide or too tall and is centered in the viewport.
-    // *
-    // * The padding is set to 1rem on the x-axis and 1.25rem on the y-axis.
-    // * This is to ensure that the dialog has a decent amount of padding.
-    // *
-    // * The border is set to 1px solid hsl(0deg 0% 91.81%). This is to ensure
-    // * that the dialog has a decent border.
-    // *
-    // * The scrollbar background color is set to transparent. This is to ensure
-    // * that the scrollbar does not have a background color.
-    // *
-    // * The scrollbar width is set to none. This is to ensure that the scrollbar
-    // * is not visible.
-    // *
-    // * The overscroll behavior is set to contain. This is to ensure that the
-    // * dialog does not have any overscroll behavior.
+  // * The styles applied to the `<dialog>` element.
+  // *
+  // * The max-width and max-height are set to 90% of the viewport width and
+  // * 85dvh of the viewport height respectively. This is to ensure that the
+  // * dialog is not too wide or too tall and is centered in the viewport.
+  // *
+  // * The padding is reset to 0, leaving the dialog's content to define its
+  // * own padding.
+  // *
+  // * The border is set to 1px solid hsl(0deg 0% 91.81%). This is to ensure
+  // * that the dialog has a decent border.
+  // *
+  // * The scrollbar is hidden via the standard `scrollbar-width`/
+  // * `scrollbar-color` properties, with `::-webkit-scrollbar` pseudo-elements
+  // * as a fallback for browsers that don't support them yet.
+  // *
+  // * The overscroll behavior is set to contain. This is to ensure that the
+  // * dialog does not have any overscroll behavior.
+  // *
+  // * The entrance animation and smooth scrolling are both disabled for
+  // * users who prefer reduced motion.
 
-    dialog {
-      max-width: 90%;
-      max-height: 85dvh;
-      margin: auto;
-      padding: 0;
-      border: 1px solid hsl(0deg 0% 91.81%);
-      border-radius: 0.5rem;
-      overscroll-behavior: contain;
-      scroll-behavior: smooth;
+  dialog {
+    max-width: 90%;
+    max-height: 85dvh;
+    margin: auto;
+    padding: 0;
+    border: 1px solid hsl(0deg 0% 91.81%);
+    border-radius: 0.5rem;
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
 
-      // Hide scrollbar for Firefox
-      scrollbar-width: none;
+    // Hide scrollbar for Firefox
+    scrollbar-width: none;
 
-      // Hide scrollbar for IE and Edge
-      scrollbar-color: transparent transparent;
-      animation: rz-bottom-to-top 0.25s ease-in-out forwards;
+    // Hide scrollbar track/thumb color as a fallback
+    scrollbar-color: transparent transparent;
+    animation: rz-bottom-to-top 0.25s ease-in-out forwards;
 
-      @media only screen and (width > 767px) {
-        max-width: 45rem;
-      }
-
-      &::-webkit-scrollbar {
-        width: 0;
-        display: none;
-      }
-
-      &::-webkit-scrollbar-track {
-        background-color: transparent;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: transparent;
-      }
-
-      &::backdrop {
-        background-color: hsl(0deg 0% 0%);
-        opacity: 0.5;
-      }
+    @media (width > 767px) {
+      max-width: 45rem;
     }
 
-    // * This animation is used to animate the dialog from bottom to top.
-    // * It is used to animate the dialog when it is opened or closed.
-    // *
-    // * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes}
-    // */
-
-    @keyframes rz-bottom-to-top {
-      0% {
-        opacity: 0;
-        transform: translateY(10%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+      animation: none;
     }
+
+    &::-webkit-scrollbar {
+      width: 0;
+      display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+
+    &::backdrop {
+      background-color: hsl(0deg 0% 0% / 50%);
+    }
+  }
+
+  // * This animation is used to animate the dialog from bottom to top.
+  // * It is used to animate the dialog when it is opened or closed.
+  // *
+  // * - https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes
+
+  @keyframes rz-bottom-to-top {
+    0% {
+      opacity: 0;
+      transform: translateY(10%);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

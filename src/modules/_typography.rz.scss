@@ -115,6 +115,23 @@
     text-underline-offset: 0.15em;
   }
 
+  // * Inherit fonts for inline text-level semantic elements.
+  // *
+  // * This is a common accessibility problem in web development. If
+  // * the font styles are not inherited, elements like `mark`, `small`,
+  // * `abbr`, and `time` will not have the same font as the rest of
+  // * the content.
+
+  mark,
+  small,
+  dfn,
+  abbr,
+  cite,
+  time,
+  data {
+    font: inherit;
+  }
+
   // * Set default styles for figcaption
   // *
   // * - `font-style: italic;` is set to make the text within the figcaption
