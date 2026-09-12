@@ -72,6 +72,7 @@
     "tags:gitlab": "git push gitlab --tags"
   },
   "resolutions": {
+    "postcss": "^8.5.23",
     "cross-spawn": "^7.0.5",
     "js-yaml": "^4.2.0",
     "tmp": "0.2.7",
@@ -90,7 +91,7 @@
     "eslint": "^9.39.2",
     "nodemon": "^3.1.14",
     "npm-check-updates": "^22.2.1",
-    "postcss": "^8.5.15",
+    "postcss": "^8.5.23",
     "postcss-banner": "^4.0.1",
     "postcss-cli": "^11.0.1",
     "postcss-minify": "^1.2.0",
